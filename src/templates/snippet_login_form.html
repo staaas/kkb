@@ -1,0 +1,17 @@
+	
+<div>
+  <ul>
+    <li><a rel="nofollow" href="{% url begin "twitter" %}">Twitter</a></li>
+    <li><a rel="nofollow" href="{% url begin "facebook" %}">Facebook</a></li>
+    <li><a rel="nofollow" href="{% url begin "google-oauth" %}">Google OAuth</a></li>
+    <li><a rel="nofollow" href="#">Vkontakte</a></li>
+  </ul>
+
+  <form action="{% url begin "openid" %}" method="post">{% csrf_token %}
+    <div>
+      <label for="openid_identifier">OpenID provider</label>
+      <input id="openid_identifier" type="text" value="" name="openid_identifier" />
+      <input type="submit" value="Login" />
+    </div>
+  </form>
+</div>

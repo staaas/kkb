@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% load markup %}
+
+{% block header %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
+{% block title %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
+
+{% block content %}
+
+<div class="cinemaclubevent-header">
+  <img src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" class="logo" />
+  <h3>{{ cinemaclub.name_short }}</h3>
+  {% if cinemaclub.url %}<a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a><br />{% endif %}
+  <i>{{ cinemaclub.mission }}</i>
+<div style="clear: both"></div>
+</div>
+
+<div class="markdown-main">
+{{ cinemaclub.description|markdown }}
+</div>
+
+<div class="photocolumn">
+<h5>Надыходзячыя падзеі:</h5>
+{% for event in upcoming_cinemaclub_events %}
+    <h3>
+      <b>{{ event.starts_at}}</b><br>
+    </h3>
+    <!-- event name -->
+    <h4>
+      <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name|upper }}</a>	
+    </h4>
+    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
+      <img src="{{ MEDIA_URL }}{{ event.poster }}" width="300px" />
+    </a>
+
+{% endfor %}
+</div>
+
+<div style="clear: both"></div>
+{% endblock %}
+

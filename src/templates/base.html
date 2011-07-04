@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}КІНАКЛУБЫ / {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Кінаклубны рух: Мінск.">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/kkb.css" media="all">
+    <script src="{{ MEDIA_URL }}js/jquery-1.6.1.js"></script>
+    <!--[if lt IE 9]><script src="javascript/html5.js"></script><![endif]-->
+    <script type="text/javascript">
+ 
+$(document).ready(function() { 
+ 
+    //select all the a tag with name equal to modal
+    $('a[name=modal]').click(function(e) {
+        //Cancel the link behavior
+        e.preventDefault();
+        //Get the A tag
+        var id = $(this).attr('href');
+     
+        //Get the screen height and width
+        var maskHeight = $(document).height();
+        var maskWidth = $(window).width();
+     
+        //Set height and width to mask to fill up the whole screen
+        $('#mask').css({'width':maskWidth,'height':maskHeight});
+         
+        //transition effect    
+        $('#mask').fadeIn(1000);   
+        $('#mask').fadeTo("slow",0.8); 
+     
+        //Get the window height and width
+        var winH = $(window).height();
+        var winW = $(window).width();
+               
+        //Set the popup window to center
+        $(id).css('top',  winH/2-$(id).height()/2);
+        $(id).css('left', winW/2-$(id).width()/2);
+     
+        //transition effect
+        $(id).fadeIn(2000);
+     
+    });
+     
+    //if close button is clicked
+    $('.window .close').click(function (e) {
+        //Cancel the link behavior
+        e.preventDefault();
+        $('#mask, .window').hide();
+    });    
+     
+    //if mask is clicked
+    $('#mask').click(function () {
+        $(this).hide();
+        $('.window').hide();
+    });        
+     
+});
+ 
+    </script>
+  </head>
+  <body>
+
+    <div id="boxes">
+      <!-- #customize your modal window here -->
+      <div id="dialog" class="window">
+	<b>Login</b> |
+	<!-- close button is defined as close class -->
+	<a href="#" class="close">Close it</a>
+	{% include "snippet_login_form.html" %}
+      </div>
+      <!-- Do not remove div#mask, because you'll need it to fill the whole screen --> 
+      <div id="mask"></div>
+    </div>
+
+    <div id="page">
+      <div id="header">
+        <ul id="topmenu">
+	  <li><a href="#">спіс кінаклубаў</a>
+	  <li><a href="#">аб сайце</a>
+	</ul>
+	<h1>{% block header %}<a href="/">КІНАКЛУБЫ /</a> {% endblock %}</span></h1>
+      </div>
+      <div id="services">
+	{% if user.is_authenticated %}
+	    <span id="login">
+	      Вы ўвайшлі як {{ user }}.
+	    </span>
+	{% else %}
+	    <a href="#dialog" name="modal" id="login">Уваход</a>
+	{% endif %}
+	RSS Calendar Twitter VK Facebook
+      </div>
+      {% block content %}{% endblock %}
+
+      <div id="footer">
+      </div>
+    </div>
+  </body>
+</html>

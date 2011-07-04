@@ -1,0 +1,7 @@
+*.pot
+*.db
+*.pyc
+*#
+*~
+src/local_settings.py
+.hg

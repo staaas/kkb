@@ -1,0 +1,12 @@
+syntax: regexp
+
+.*\.pyc
+.*\.pyo
+.*~
+.*\#
+^src/\.ropeproject
+
+^src/settings_local\.py
+.*\.db
+^src/media/modelimg
+^.git/

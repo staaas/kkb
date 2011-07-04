@@ -1,0 +1,79 @@
+{% load threadedcomments_tags %}
+
+{% get_comment_list for obj as comment_list %}
+
+{% if comment_list %}
+<div class="comments-tree">
+<div class="comments-title">
+  <h3>Каментары ({{ comment_list|length }})</h3>
+
+  <a href="#" class="show-comment-form" name="base-root1">дадаць яшчэ адзін каментар</a>
+  <div id="comment-form-base-root1" class="comment-form">
+    {% render_comment_form for obj %}
+  </div>
+</div>
+{% for comment in comment_list|fill_tree|annotate_tree %}
+{% ifchanged comment.parent_id %}{% else %}
+    </li>
+{% endifchanged %}
+
+{% if not comment.open and not comment.close %}
+    </li>
+{% endif %}
+    
+{% if comment.open %}
+    {% if comment.depth == 1 %}
+        <ul class="comment-root">
+    {% else %}
+        {% if comment.depth == 2 %}
+            <ul class="comment-replies">
+	{% else %}
+            <ul class="comment-replies comment-replies-indent">
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+<li{% if comment.last %} class="last"{% endif %}>
+<div class="comment-text" id="comment-{{ comment.id }}">
+  <div class="comment-header">
+    <a class="comment-link" href="#comment-{{ comment.id }}">#</a>
+    <div class="comment-author">{{ comment.user.username }}</div>
+    <div class="comment-datetime">{{ comment.submit_date }}</div>
+  </div>
+  {{ comment.comment|linebreaksbr }}
+  <div>
+    <a href="#" class="show-comment-form show-comment-form-box" name="base-{{ comment.id }}">Адказаць</a>
+    <div id="comment-form-base-{{ comment.id }}" class="comment-form">
+      {% render_comment_form for obj with comment.id %}
+    </div>
+  </div>
+</div>
+
+{% for close in comment.close %}
+    </li>
+    </ul>
+{% endfor %}
+
+{% endfor %}
+</div>
+{% endif %}
+
+<a href="#" class="show-comment-form" name="base-root2">дадаць яшчэ адзін каментар</a>
+<div id="comment-form-base-root2" class="comment-form">
+{% render_comment_form for obj %}
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+    $('.show-comment-form').click(function(event) {
+        event.preventDefault();
+
+        $('.comment-form').slideUp();
+        $('.show-comment-form').slideDown();
+
+        var comment_id = $(this).attr('name');
+        $('#comment-form-' + comment_id).slideDown();
+        $(this).slideUp();
+    });
+});
+</script>
