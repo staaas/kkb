@@ -5,5 +5,6 @@
 *~
 src/settings_local.py
 src/media/modelimg/*
+src/static/*
 src/.ropeproject*
 .hg

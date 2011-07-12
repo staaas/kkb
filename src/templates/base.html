@@ -4,8 +4,8 @@
     <title>{% block title %}КІНАКЛУБЫ / {% endblock %}</title>
     <meta charset="utf-8">
     <meta name="description" content="Кінаклубны рух: Мінск.">
-    <link rel="stylesheet" href="{{ MEDIA_URL }}styles/kkb.css" media="all">
-    <script src="{{ MEDIA_URL }}js/jquery-1.6.1.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}styles/kkb.css" media="all">
+    <script src="{{ STATIC_URL }}js/jquery-1.6.1.js"></script>
     <!--[if lt IE 9]><script src="javascript/html5.js"></script><![endif]-->
     <script type="text/javascript">
  
@@ -76,8 +76,8 @@ $(document).ready(function() {
     <div id="page">
       <div id="header">
         <ul id="topmenu">
-	  <li><a href="#">спіс кінаклубаў</a>
-	  <li><a href="#">аб сайце</a>
+	  <li><a href="#">спіс кінаклубаў</a></li>
+	  <li><a href="#">аб сайце</a></li>
 	</ul>
 	<h1>{% block header %}<a href="/">КІНАКЛУБЫ /</a> {% endblock %}</span></h1>
       </div>

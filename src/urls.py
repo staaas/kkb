@@ -6,12 +6,12 @@ from django.contrib import admin
 admin.autodiscover()
 
 if settings.DEBUG:
-    urlpatterns = patterns('', (r'^media/(?P<path>.*)$',
+    urlpatterns = patterns('', (r'^site_media/media/(?P<path>.*)$',
                                 'django.views.static.serve',
                                 {'document_root': settings.MEDIA_ROOT}),)
-    urlpatterns += patterns('', (r'^static/(?P<path>.*)$',
+    urlpatterns += patterns('', (r'^site_media/static/(?P<path>.*)$',
                                  'django.views.static.serve',
-                                 {'document_root': settings.MEDIA_ROOT}),)
+                                 {'document_root': settings.STATIC_ROOT}),)
 else:
     urlpatterns = []
 
