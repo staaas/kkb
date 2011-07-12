@@ -3,5 +3,7 @@
 *.pyc
 *#
 *~
-src/local_settings.py
+src/settings_local.py
+src/media/modelimg/*
+src/.ropeproject*
 .hg
