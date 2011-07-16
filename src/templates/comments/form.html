@@ -14,10 +14,13 @@
       {{ form.parent }}
       <div style="display: none">{{ form.honeypot }}</div>
       <input type="hidden" name="next" value="{{ request.path }}" />
-      <input class="comment-submit-button" type="submit" value="Post" name="post">
+      <input class="comment-submit-button" type="submit" value="Адправіць" name="post">
+      <a href="#" class="cancel-comment-form-box">Адмяніць</a>
     </form>
   </div>
   <div style="clear:both"></div>
 {% else %}
-ZZZ
+<div class="please-login">
+Увайдзіце праз <a href="#">Вкантакце</a>, <a href="#">Facebook</a>, <a href="#">Twitter</a>, <a href="#">Google</a> ці <a href="#">Open ID</a>, каб пакідаць каментары.
+</div>
 {% endif %}

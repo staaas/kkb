@@ -271,6 +271,14 @@ h2.sectin {
 
 /********** comments ***********/
 
+.please-login {
+    background-color: #FFFF88;
+    color: #555555;
+    padding: 5px;
+    margin: 15px 0 5px 0;
+    border: 1px solid #FFFF00;
+}
+
 .comments-tree {
     width: 100%;
     text-align: left;
@@ -284,11 +292,6 @@ h2.sectin {
     font-size: 1.4em;
     text-shadow: 0 1px 1px #979797;
     display: inline;
-}
-
-.comments-title a.show-comment-form {
-    float: right;
-    padding-top: 5px;
 }
 
 .comment-form {
@@ -343,6 +346,10 @@ ul.comment-replies div.comment-text {
     text-decoration: underline;
 }
 
+#comment-form-base-root2 {
+    text-align: left;
+}
+
 a.show-comment-form-box {
     display: inline-block;
     padding: 0px 5px 1px 5px;
@@ -352,9 +359,41 @@ a.show-comment-form-box {
     text-decoration: none;
     font-size: small;
 }
-
-a.show-comment-form-box:hover {
+a.show-comment-form-box:hover, a.show-comment-form-box:focus {
     background-color: #FF0000;
+}
+
+a.show-comment-form-root-box {
+    display: inline-block;
+    float: right;
+    padding: 0px 5px 1px 5px;
+    margin-top: 10px;
+    background-color: #888888;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: small;
+}
+a.show-comment-form-root-box:hover, a.show-comment-form-root-box:focus {
+    background-color: #FF0000;
+}
+
+a.cancel-comment-form-box {
+    display: inline-block;
+    padding: 0px 5px 1px 5px;
+    margin-top: 10px;
+    background-color: #FF9999;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: small;
+}
+a.cancel-comment-form-box:hover, a.cancel-comment-form-box:focus {
+    background-color: #FF0000;
+}
+
+/* COMMENT FORM AREA */
+
+.comment-form-form {
+    padding-top: 15px;
 }
 
 /* COMMENT SUBMIT BUTTON*/
@@ -371,6 +410,18 @@ a.show-comment-form-box:hover {
 }
 .comment-submit-button {
     display: inline-block;
+    display: inline-block;
     float: right;
     width: 137px;
+    padding: 0px 5px 1px 5px;
+    margin-top: 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 0;
+    text-decoration: none;
+    font-size: small;
+}
+
+.comment-submit-button:hover, .comment-submit-button:focus {
+    background-color: #FF0000;
 }

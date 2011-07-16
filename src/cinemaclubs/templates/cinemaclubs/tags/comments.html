@@ -7,7 +7,7 @@
 <div class="comments-title">
   <h3>Каментары ({{ comment_list|length }})</h3>
 
-  <a href="#" class="show-comment-form" name="base-root1">дадаць яшчэ адзін каментар</a>
+  <a href="#" class="show-comment-form show-comment-form-root-box" name="base-root1">дадаць яшчэ адзін каментар</a>
   <div id="comment-form-base-root1" class="comment-form">
     {% render_comment_form for obj %}
   </div>
@@ -58,7 +58,7 @@
 </div>
 {% endif %}
 
-<a href="#" class="show-comment-form" name="base-root2">дадаць яшчэ адзін каментар</a>
+<a href="#" class="show-comment-form show-comment-form-root-box" name="base-root2">дадаць яшчэ адзін каментар</a>
 <div id="comment-form-base-root2" class="comment-form">
 {% render_comment_form for obj %}
 </div>
@@ -74,6 +74,12 @@ $(document).ready(function() {
         var comment_id = $(this).attr('name');
         $('#comment-form-' + comment_id).slideDown();
         $(this).slideUp();
+    });
+    $('.cancel-comment-form-box').click(function(event) {
+        event.preventDefault();
+
+        $('.comment-form').slideUp();
+        $('.show-comment-form').slideDown();
     });
 });
 </script>
