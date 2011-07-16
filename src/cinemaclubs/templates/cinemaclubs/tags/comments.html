@@ -9,18 +9,7 @@
 
   <a href="#" class="show-comment-form" name="base-root1">дадаць яшчэ адзін каментар</a>
   <div id="comment-form-base-root1" class="comment-form">
-    {% get_comment_form for obj as comment_form %}
-    <form method="post" action="/comments/post/">
-      {{ csrf_token }}
-      {{ comment_form.comment }}
-      {{ comment_form.content_type }}
-      {{ comment_form.object_pk }}
-      {{ comment_form.timestamp }}
-      {{ comment_form.security_hash }}
-      {{ comment_form.parent }}
-      <div style="display: none">{{ comment_form.honeypot }}</div>
-      <input class="submit-post" type="submit" value="Post" name="post">
-    </form>
+    {% render_comment_form for obj %}
   </div>
 </div>
 {% for comment in comment_list|fill_tree|annotate_tree %}

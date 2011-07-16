@@ -356,3 +356,21 @@ a.show-comment-form-box {
 a.show-comment-form-box:hover {
     background-color: #FF0000;
 }
+
+/* COMMENT SUBMIT BUTTON*/
+
+.comment-form-textarea {
+    padding: 0 145px 0 0;
+    background-image: url('../img/markdown-legend-be.png');
+    background-repeat:no-repeat;
+    background-position:right top;
+}
+.comment-form-textarea textarea {
+    width: 100%;
+    height: 255px;
+}
+.comment-submit-button {
+    display: inline-block;
+    float: right;
+    width: 137px;
+}

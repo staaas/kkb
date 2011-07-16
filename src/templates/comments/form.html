@@ -1,0 +1,23 @@
+{% load comments i18n %}
+{% if request.user.is_authenticated %}
+  <div class="comment-form-form">
+    <form method="post" action="/comments/post/">
+      {% csrf_token %}
+      <div class="comment-form-textarea">
+	{% if form.comment.errors %}{{ form.comment.errors }}{% endif %}
+	{{ form.comment }}
+      </div>
+      {{ form.content_type }}
+      {{ form.object_pk }}
+      {{ form.timestamp }}
+      {{ form.security_hash }}
+      {{ form.parent }}
+      <div style="display: none">{{ form.honeypot }}</div>
+      <input type="hidden" name="next" value="{{ request.path }}" />
+      <input class="comment-submit-button" type="submit" value="Post" name="post">
+    </form>
+  </div>
+  <div style="clear:both"></div>
+{% else %}
+ZZZ
+{% endif %}
