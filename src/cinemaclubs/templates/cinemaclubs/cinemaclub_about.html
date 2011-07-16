@@ -1,7 +1,7 @@
 
 {% extends "base.html" %}
 
-{% load markup %}
+{% load markup cinemaclubs_tags %}
 
 {% block header %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
 {% block title %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
@@ -18,6 +18,9 @@
 
 <div class="markdown-main">
 {{ cinemaclub.description|markdown }}
+
+{% custom_comments_tree cinemaclub %}
+
 </div>
 
 <div class="photocolumn">

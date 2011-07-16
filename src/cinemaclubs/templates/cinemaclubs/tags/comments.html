@@ -58,7 +58,7 @@
 </div>
 {% endif %}
 
-<a href="#" class="show-comment-form show-comment-form-root-box" name="base-root2">дадаць яшчэ адзін каментар</a>
+<a href="#" class="show-comment-form show-comment-form-root-box" name="base-root2">{% if comment_list %}дадаць яшчэ адзін каментар{% else %}дадаць каментар{% endif %}</a>
 <div id="comment-form-base-root2" class="comment-form">
 {% render_comment_form for obj %}
 </div>
