@@ -329,6 +329,14 @@ ul.comment-replies div.comment-text {
     margin-right: 15px;
 }
 
+/* USERS DISPLAY */
+
+.soc_auth_openid img {
+    border: 0;
+}
+
+/* END OF USERS DISPLAY */
+
 .comment-header div.comment-datetime {
     font-size: small;
     color: #777777;

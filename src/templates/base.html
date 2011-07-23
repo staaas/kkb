@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load cinemaclubs_tags %}<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>{% block title %}КІНАКЛУБЫ / {% endblock %}</title>
@@ -84,7 +84,8 @@ $(document).ready(function() {
       <div id="services">
 	{% if user.is_authenticated %}
 	    <span id="login">
-	      Вы ўвайшлі як {{ user }}.
+	      Вы ўвайшлі як {% display_user user %}
+	      <b>/</b> <a href="{% url logout %}">Выйсце</a>
 	    </span>
 	{% else %}
 	    <a href="#dialog" name="modal" id="login">Уваход</a>

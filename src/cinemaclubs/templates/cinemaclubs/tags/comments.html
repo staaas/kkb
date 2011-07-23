@@ -1,4 +1,4 @@
-{% load threadedcomments_tags %}
+{% load threadedcomments_tags cinemaclubs_tags %}
 
 {% get_comment_list for obj as comment_list %}
 
@@ -12,7 +12,8 @@
     {% render_comment_form for obj %}
   </div>
 </div>
-{% for comment in comment_list|fill_tree|annotate_tree %}
+{# populate_users is a custom tag that lets fill auth providers and uids #}
+{% for comment in comment_list|populate_users|fill_tree|annotate_tree %}
 {% ifchanged comment.parent_id %}{% else %}
     </li>
 {% endifchanged %}
@@ -37,7 +38,7 @@
 <div class="comment-text" id="comment-{{ comment.id }}">
   <div class="comment-header">
     <a class="comment-link" href="#comment-{{ comment.id }}">#</a>
-    <div class="comment-author">{{ comment.user.username }}</div>
+    <div class="comment-author">{% display_user comment.user %}</div>
     <div class="comment-datetime">{{ comment.submit_date }}</div>
   </div>
   {{ comment.comment|linebreaksbr }}

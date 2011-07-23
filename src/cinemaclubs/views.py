@@ -6,7 +6,7 @@ from django.http import Http404
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import get_object_or_404, redirect
 
-from utils.decorators import render_to
+from commonutils.decorators import render_to
 from models import CinemaClubEvent, CinemaClub
 
 
