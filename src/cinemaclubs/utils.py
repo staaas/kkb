@@ -1,4 +1,8 @@
+from StringIO import StringIO
+
+import Image as pil
 from social_auth.models import UserSocialAuth
+
 
 def get_social_link(provider, uid):
     if provider == 'openid':
@@ -27,3 +31,15 @@ def socialize_users(*users_list):
             user.soc_provider = None
             user.soc_uid = 0
             user.soc_link = ''
+
+def crop_image(file_path, x1, y1, x2, y2):
+    img = pil.open(file_path)
+    img = img.crop((x1, y1, x2, y2))
+    
+    tmp = StringIO()
+    img.save(tmp, 'PNG')
+    tmp.seek(0)
+    output_data = tmp.getvalue()
+    tmp.close()
+
+    return output_data

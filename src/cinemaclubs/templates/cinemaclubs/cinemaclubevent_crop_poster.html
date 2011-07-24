@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block header %}{{ block.super }}ДАДАЦЬ{% endblock %}
+{% block title %}{{ block.super }}ДАДАЦЬ{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}js/jquery.Jcrop.min.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}styles/jquery.Jcrop.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<img src="{{ image_url }}" id="cropbox"/>
+<script type="text/javascript">
+  function showCoords(c) {
+    // variables can be accessed here as
+    // c.x, c.y, c.x2, c.y2, c.w, c.h
+    $('#id_x1').val(c.x);
+    $('#id_y1').val(c.y);
+    $('#id_x2').val(c.x2);
+    $('#id_y2').val(c.y2);
+  };
+  $(document).ready(function() {
+    $('#cropbox').Jcrop({
+      onSelect: showCoords,
+      aspectRatio: 1,
+      minSize: [200, 200],
+      setSelect: [0, 0, {{ selection_size }}, {{ selection_size }}],
+      allowSelect: false,
+    });
+  });
+</script>
+
+<div class="comment-form-form">
+  <form class="cinemaclubs_form" method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input class="comment-submit-button" type="submit" value="Працягнуць" name="post">
+  </form>
+</div>
+<div style="clear:both"></div>
+{% endblock %}

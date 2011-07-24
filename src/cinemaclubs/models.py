@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from imagekit.models import ImageModel
+from django.conf import settings
+
 
 UPLOAD_DIR = 'modelimg'
+IMG_MAX_SIZE = 1024
+IMG_MIN_SIZE = 300
 
 class CinemaClub(models.Model):
     id = models.AutoField(primary_key = True)
@@ -18,7 +22,7 @@ class CinemaClub(models.Model):
     description = models.TextField(default='')
     name_short = models.CharField(max_length=40, default='')  # slug for header
 
-    curators = models.ManyToManyField(User)
+    curators = models.ManyToManyField(User, related_name='cinemaclubs')
 
     def __unicode__(self):
         return self.name
@@ -45,3 +49,13 @@ class CinemaClubEvent(ImageModel):
 
     def __unicode__(self):
         return self.name
+
+TMP_UPLOAD_DIR = 'tmpimg'
+
+class TemporaryImage(ImageModel):
+    image = models.ImageField(null=True, upload_to=TMP_UPLOAD_DIR)
+    created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def url(self):
+        return '%s%s' % (settings.MEDIA_URL, self.image)

@@ -5,6 +5,8 @@
 *~
 src/settings_local.py
 src/media/modelimg/*
+src/media/eventscache/*
+src/media/tmpimg/*
 src/static/*
 src/.ropeproject*
 .hg

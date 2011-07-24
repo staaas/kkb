@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}{{ block.super }}ДАДАЦЬ{% endblock %}
+{% block title %}{{ block.super }}ДАДАЦЬ{% endblock %}
+
+{% block content %}
+  {% if event.poster %}
+    <img src="{{ event.poster_display.url }}" />
+  {% else %}
+    No poster :(
+  {% endif %}
+  <div class="comment-form-form">
+    <form class="cinemaclubs_form" method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      <input class="comment-submit-button" type="submit" value="Працягнуць" name="post">
+    </form>
+  </div>
+  <div style="clear:both"></div>
+{% endblock %}

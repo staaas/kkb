@@ -371,6 +371,15 @@ a.cancel-comment-form-box:hover, a.cancel-comment-form-box:focus {
     background-color: #FF0000;
 }
 
+/* COMMON FORM */
+
+.cinemaclubs_form label,
+.cinemaclubs_form select,
+.cinemaclubs_form input,
+.cinemaclubs_form textarea {
+    display: block;
+}
+
 /* COMMENT FORM AREA */
 
 .comment-form-form {

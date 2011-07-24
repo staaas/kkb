@@ -9,6 +9,7 @@
     <script src="{{ STATIC_URL }}js/jquery-1.6.1.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}js/jquery.reveal.js" type="text/javascript"></script>
     <!--[if lt IE 9]><script src="javascript/html5.js"></script><![endif]-->
+    {% block extrahead %}{% endblock %}
   </head>
   <body>
 
@@ -30,6 +31,9 @@
 	{% if user.is_authenticated %}
 	    <span id="login">
 	      Вы ўвайшлі як {% display_user user %}
+	      {% if user.is_staff %}
+	        <b>/</b> <a href="/admin/">Панэль адміністратара</a>
+	      {% endif %}
 	      <b>/</b> <a href="{% url logout %}">Выйсце</a>
 	    </span>
 	{% else %}
