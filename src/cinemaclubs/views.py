@@ -2,9 +2,10 @@
 from datetime import timedelta, datetime
 import random
 
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 from commonutils.decorators import render_to
 from models import CinemaClubEvent, CinemaClub
@@ -21,7 +22,7 @@ HOME_EVENTS_COUNT = 4
 def minsk(request):
     upcoming_events = CinemaClubEvent.objects.filter(
         starts_at__gte=datetime.now() - timedelta(hours=1)).order_by(
-        'starts_at')[:2 * HOME_EVENTS_COUNT]
+        'starts_at')[:HOME_EVENTS_COUNT]
     upcoming_events_chunks = chunks(list(upcoming_events), HOME_EVENTS_COUNT)
     cinemaclubs = list(CinemaClub.objects.all())
 
@@ -67,3 +68,6 @@ def logout(request):
     """Logs out user"""
     auth_logout(request)
     return redirect('home')
+
+def add_cinemaclubevent(request):
+    pass

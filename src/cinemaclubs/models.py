@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from imagekit.models import ImageModel
 
 UPLOAD_DIR = 'modelimg'
 
@@ -16,10 +18,12 @@ class CinemaClub(models.Model):
     description = models.TextField(default='')
     name_short = models.CharField(max_length=40, default='')  # slug for header
 
+    curators = models.ManyToManyField(User)
+
     def __unicode__(self):
         return self.name
 
-class CinemaClubEvent(models.Model):
+class CinemaClubEvent(ImageModel):
     id = models.AutoField(primary_key = True)
     organizer = models.ForeignKey('CinemaClub')
 #    geo_coordinates = models.CharField(max_length=50)
@@ -31,6 +35,13 @@ class CinemaClubEvent(models.Model):
     name = models.CharField(max_length=150, default='')
     short_description = models.CharField(max_length=500, default='', db_column='short_desciption')
     description = models.TextField(default='')
+
+    class IKOptions:
+        # This inner class is where we define the ImageKit options for the model
+        spec_module = 'cinemaclubs.ikspecs'
+        cache_dir = 'eventscache'
+        image_field = 'poster'
+        # save_count_as = 'num_views'
 
     def __unicode__(self):
         return self.name

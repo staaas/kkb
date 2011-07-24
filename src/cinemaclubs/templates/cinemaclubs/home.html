@@ -13,7 +13,7 @@
 <div class="homeevents">
   {% for event in chunk %}
   <div class="homeevent{% if forloop.last %}last{% endif %}">
-    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">	<img src="{{ MEDIA_URL }}{{ event.poster }}" class="detailsimg" />
+    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">	<img src="{{ event.poster_thumbnail.url }}" class="detailsimg" />
     </a>
     <h3>
 
