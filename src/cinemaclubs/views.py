@@ -115,6 +115,7 @@ def cinemaclubevent_edit_poster(request, event_id):
             w, h = get_image_dimensions(form.cleaned_data.get('image'))
             tmp_img = form.save(commit=False)
             if w != h:
+                tmp_img.uploaded_by = request.user
                 tmp_img.save()
                 return HttpResponseRedirect(
                     reverse('cinemaclubevent_crop_poster', args=[event_id,
@@ -136,10 +137,17 @@ def cinemaclubevent_crop_poster(request, event_id, tmp_img_id):
             event_id not in list(e.id for e in request.user.cinemaclubs.all()):
         raise Http404
 
-    event = get_object_or_404(CinemaClubEvent,
-                              id=event_id)
+    return object_crop_image(request, event_id, CinemaClubEvent,
+                             'someevent', 'poster', tmp_img_id)
+
+def object_crop_image(request, object_id, object_class,
+                       object_details_view, object_image_field,
+                       tmp_img_id):
+    obj = get_object_or_404(object_class,
+                              id=object_id)
     tmp_img = get_object_or_404(TemporaryImage,
-                                id=tmp_img_id)
+                                id=tmp_img_id,
+                                uploaded_by=request.user)
     width, height = get_image_dimensions(tmp_img.image)
 
     form = CropImageForm(width, height, request.POST or None)
@@ -149,10 +157,11 @@ def cinemaclubevent_crop_poster(request, event_id, tmp_img_id):
                                  form.cleaned_data['y1'],
                                  form.cleaned_data['x2'],
                                  form.cleaned_data['y2'])
-        event.poster.save('%s.png' % os.path.basename(unicode(tmp_img.image)),
-                          ContentFile(cropped_img))
+        getattr(obj, object_image_field).save(
+            '%s.png' % os.path.basename(unicode(tmp_img.image)),
+            ContentFile(cropped_img))
         return HttpResponseRedirect(
-            reverse('someevent', args=[event_id]))
+            reverse(object_details_view, args=[object_id]))
 
     return {'image_url': tmp_img.url,
             'selection_size': min(width, height),

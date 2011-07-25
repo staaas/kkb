@@ -55,6 +55,7 @@ TMP_UPLOAD_DIR = 'tmpimg'
 class TemporaryImage(ImageModel):
     image = models.ImageField(null=True, upload_to=TMP_UPLOAD_DIR)
     created = models.DateTimeField(auto_now_add=True)
+    uploaded_by = models.ForeignKey(User, null=True, default=None)
 
     @property
     def url(self):

@@ -31,6 +31,9 @@
 	{% if user.is_authenticated %}
 	    <span id="login">
 	      Вы ўвайшлі як {% display_user user %}
+	      {% if user.is_staff or user.cinemaclubs.all.count %}
+	        <b>/</b> <a href="{% url cinemaclubevent_add %}">Дадаць кіналекторый</a>
+	      {% endif %}
 	      {% if user.is_staff %}
 	        <b>/</b> <a href="/admin/">Панэль адміністратара</a>
 	      {% endif %}
