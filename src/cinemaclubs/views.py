@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.files.images import get_image_dimensions
 from django.core.files.base import ContentFile, File
+from social_auth.views import auth as social_auth_begin
 
 from commonutils.decorators import render_to
 from models import CinemaClubEvent, CinemaClub, TemporaryImage
@@ -20,10 +21,16 @@ def chunks(some_list, chunk_size):
     return [some_list[i: i + chunk_size] for i in \
                 xrange(0, len(some_list), chunk_size)]
 
+
+def kkb_socialauth_begin(request, backend):
+    '''we want to logout before logging in as another user.'''
+    auth_logout(request)
+    return social_auth_begin(request, backend)
+
 HOME_CINEMACLUBS_COUNT = 4
 HOME_EVENTS_COUNT = 4
 
-@render_to('cinemaclubs/home.html')
+@render_to('cinemaclubs/bhome.html')
 def minsk(request):
     upcoming_events = CinemaClubEvent.objects.filter(
         starts_at__gte=datetime.now() - timedelta(hours=1)).order_by(

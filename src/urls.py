@@ -19,7 +19,10 @@ urlpatterns += patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'', include('social_auth.urls')),
+    url(r'^soc/login/(?P<backend>[^/]+)/$',
+        'cinemaclubs.views.kkb_socialauth_begin',
+        name='kkb_socialauth_begin'),
+    url(r'^soc/', include('social_auth.urls')),
 
     url(r'^$', 'cinemaclubs.views.home', name='home'),
     url(r'^minska/$', 'cinemaclubs.views.minsk', name='minsk'),

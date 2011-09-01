@@ -1,0 +1,72 @@
+html, body {
+    height: 100%;
+}
+#mastercontent .inner {
+    padding: 55px 0 10px 0;
+}
+/* modal forms */
+.soc-auth-buttons li {
+    display: inline;
+    float: left;
+    width: 100px;
+    padding-right: 80px;
+}
+.soc-auth-buttons li:last-child {
+    padding-right: 0;
+}
+.soc-auth-buttons li a, .soc-auth-buttons li a:hover {
+    text-decoration: none;
+}
+.soc-auth-buttons li a:hover span {
+    text-decoration: underline;
+}
+.soc-auth-buttons li a span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+form div.openid-identifier {
+    display: inline-block;
+    float: right;
+    background: url('../img/openid_20.png') no-repeat;
+    padding: 0 0 0 30px;
+
+}
+form div.openid-identifier input[type=text] {
+    width: 380px;
+    margin-top: -1px;
+}
+/* topbar */
+.topbar ul li span {
+    display: block;
+    float: none;
+    line-height: 19px;
+    padding: 10px 10px 11px;
+    text-decoration: none;
+}
+.topbar ul li span strong{
+    color: #dedede;
+}
+#session img {
+    border: medium none;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-right: 6px;
+    vertical-align: top;
+    width: 20px;
+}
+.menulogin img {
+    border: medium none;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-right: 6px;
+    vertical-align: top;
+    width: 20px;
+}
+.topbar ul li span input[type=checkbox] {
+    display: inline-block;
+    margin: 3px 0 3px 2px;
+    vertical-align: top;
+}
