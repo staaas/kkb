@@ -1,0 +1,36 @@
+{% load i18n comments kkb_tags %}
+<script type="text/javascript">
+ $(document).ready(function() {
+  $(".goto-addcomment").click(function (e) {
+    e.preventDefault();
+
+    {% if request.user.is_authenticated %}
+    var scroll_to_id = '#id_comment';
+    {% else %}
+    var scroll_to_id = '#login-to-comment';
+    {% endif %}
+
+    goToByScroll(scroll_to_id);
+    window.location.hash = scroll_to_id;
+    processHash();
+  });
+ });
+</script>
+
+    {% if comment_list %}
+      <h2>{% trans "Comments" %} <small><a class="goto-addcomment" href="#addcomment">{% trans "add" %}</small></h2>
+      {% for comment in comment_list|annotate_users %}
+        <div class="comment">
+	  <div class="comment-avatar">
+	    <img class="goer-avatar" src="{{ comment.user.soc_avatar }}" alt="{{ comment.user.soc_username }}" width="50px" height="50px" />
+	  </div>
+	  <div class="comment-content">
+            <a class="comment-user" href="{{ comment.user.soc_link }}">{{ comment.user.soc_username }}</a> {% if comment.user_is_goer %}{% endif %}
+	    <div class="comment-text">
+	      <p>{{ comment.comment|linebreaksbr }}</p>
+	      <small>{{ comment.submit_date|date:"j E Y г. G:i" }}</small>
+	    </div>
+	  </div>
+	</div>
+     {% endfor %}
+    {% endif %}

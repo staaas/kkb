@@ -1,53 +1,40 @@
-{% extends "bootstrap.html" %}
+{% extends "bootstrap.html" %}{% load i18n %}
 
 {% block header %}{{ block.super }}МІНСКА{% endblock %}
 {% block title %}{{ block.super }}МІНСКА{% endblock %}
 
 {% block content %}
-<h2 class="sect">
-  <span class="h2links"><a href="#">УСЕ ПАДЗЕІ</a> / <a href="#">КАЛЕНДАР</a></span>
-  ПАДЗЕІ
-</h2>
+<ul class="tabs">
+  <li class="right"><a href="#">{% trans "Calendar" %}</a></li>
+  <li class="active right"><a href="#">{% trans "Upcomin events" %}</a></li>
+</ul>
 
-{% for chunk in upcoming_events_chunks %}
 <div class="row">
-  {% for event in chunk %}
+  {% for event in upcoming_events %}
   <div class="span4 columns">
-    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">	<img src="{{ event.poster_thumbnail.url }}" class="detailsimg" width="220px" />
+    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">	<img src="{{ event.poster_thumbnail.url }}" width="220px" />
     </a>
-    <h3>
-
-      <b>{{ event.starts_at}}</b><br>
-    </h3>
-    <!-- event name -->
-    <h4>
-      <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name|upper }}</a>	
-    </h4>
-    <!-- event description -->
-    <p>{{ event.short_description }}
-
+    <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
+    <h3 class="event-or-cinemaclub-name"><a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name|upper }}</a></h3>
+    <p>{{ event.short_description }}<br />
       <a href="{% include "cinemaclubs/snippet_event_url.html" %}" class="more">(чытаць далей)</a>
     </p>
   </div>
   {% endfor %}
-
-  <div style="clear: both"></div>
 </div>
 
-{% endfor %}
-
-<div class="row">
-  <div class="homecinemaclub">
-    <h2 class="span3 column">КІНАКЛУБЫ</h2>
+<div class="row" style="margin-top: 30px;">
+  <div class="span3 column">
+    <h2>Кінаклубы</h2>
+    <a href="#">{% trans "show all" %}</a>
   </div>
-{% for cc in cinemaclubs %}
-	<div class="span3 column">
-	  <img src="{{ MEDIA_URL }}{{ cc.logo }}" width="160px" />
-	  <h4 class="home-cinemaclub-about"><a href="{% url cinemaclub_about cc.slug %}">{{ cc.name }}</a></h4>
-	</div>
-
-{% endfor %}
-	<div style="clear: both"></div>
+  {% for cc in cinemaclubs %}
+    <div class="span3 column">
+      <img src="{{ MEDIA_URL }}{{ cc.logo }}" width="160px" />
+      <h3 class="event-or-cinemaclub-name"><a href="{% url cinemaclub_about cc.slug %}">{{ cc.name }}</a></h3>
+    </div>
+  {% endfor %}
+  <div style="clear: both"></div>
 </div>
 
 {% endblock %}

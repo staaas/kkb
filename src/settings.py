@@ -40,7 +40,10 @@ TIME_ZONE = 'Europe/Minsk'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'be'
+
+LOCALE_PATHS = (os.path.join(PROJECT_ROOT, 'localecustom'),)
+FORMAT_MODULE_PATH = 'formats'
 
 SITE_ID = 1
 
@@ -107,6 +110,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.static",
+    "commonutils.social.context_processors.socialize_user"
 )
 
 
@@ -135,13 +139,15 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.markup',
     'django.contrib.comments',
-    'threadedcomments',    
+    'commonutils.ncomments',
     'south',
     'debug_toolbar',
     'social_auth',
     'cinemaclubs',
     'imagekit',
 )
+
+COMMENTS_APP = 'commonutils.ncomments'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -174,11 +180,12 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+DEFAULT_SOCIAL_AVATAR =  STATIC_URL + 'img/default_avatar.png'
+SOCIAL_AUTH_SESSION_EXPIRATION = False
+
 LOGIN_URL          = '/login/'
 LOGIN_REDIRECT_URL = '/minska/'
 LOGIN_ERROR_URL    = '/login-error/'
-
-COMMENTS_APP = 'threadedcomments'
 
 # for django debug toolbar
 INTERNAL_IPS = ('127.0.0.1',)

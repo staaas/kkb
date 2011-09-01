@@ -17,11 +17,6 @@ from models import CinemaClubEvent, CinemaClub, TemporaryImage
 from forms import CinemaClubEventForm, TemporaryImageForm, CropImageForm
 from utils import crop_image
 
-def chunks(some_list, chunk_size):
-    return [some_list[i: i + chunk_size] for i in \
-                xrange(0, len(some_list), chunk_size)]
-
-
 def kkb_socialauth_begin(request, backend):
     '''we want to logout before logging in as another user.'''
     auth_logout(request)
@@ -35,19 +30,18 @@ def minsk(request):
     upcoming_events = CinemaClubEvent.objects.filter(
         starts_at__gte=datetime.now() - timedelta(hours=1)).order_by(
         'starts_at')[:HOME_EVENTS_COUNT]
-    upcoming_events_chunks = chunks(list(upcoming_events), HOME_EVENTS_COUNT)
     cinemaclubs = list(CinemaClub.objects.all())
 
-    return {'upcoming_events_chunks': upcoming_events_chunks,
+    return {'upcoming_events': upcoming_events,
             'cinemaclubs': random.sample(cinemaclubs,
                                          min(HOME_CINEMACLUBS_COUNT,
                                              len(cinemaclubs))),}
 
 
 def home(request):
-    return redirect('minsk', permanent=True)
+    return redirect('minsk', permanent=False)
 
-@render_to('cinemaclubs/cinemaclub_about.html')
+@render_to('cinemaclubs/bcinemaclub_about.html')
 def cinemaclub_about(request, cinemaclub_slug):
     cinemaclub = get_object_or_404(CinemaClub,
                                    slug=cinemaclub_slug)
@@ -58,7 +52,7 @@ def cinemaclub_about(request, cinemaclub_slug):
             'upcoming_cinemaclub_events': upcoming_cinemaclub_events}
 
 
-@render_to('cinemaclubs/cinemaclubevent.html')
+@render_to('cinemaclubs/bcinemaclubevent.html')
 def cinemaclubevent(request, cinemaclub_slug, event_id):
     event = get_object_or_404(CinemaClubEvent,
                               id=event_id,
@@ -67,7 +61,7 @@ def cinemaclubevent(request, cinemaclub_slug, event_id):
     return {'event': event}
 
 
-@render_to('cinemaclubs/cinemaclubevent.html')
+@render_to('cinemaclubs/bcinemaclubevent.html')
 def someevent(request, event_id):
     event = get_object_or_404(CinemaClubEvent, id=event_id)
     if event.organizer:

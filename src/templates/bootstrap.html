@@ -38,7 +38,7 @@
     <div class="topbar">
       <div class="fill">
 	<div class="container fixed">
-	  <h3><a href="#">{% block header %}КІНАКЛУБЫ / {% endblock %}</a></h3>
+	  <h3><a id="kinakluby" href="/">КІНАКЛУБЫ /&nbsp;</a><span>{% block header %}{% endblock %}</span></h3>
 	  <ul>
 	    {% block extratopbar %}{% endblock %}
 	  </ul>
@@ -71,31 +71,36 @@
       </div>
     </div>
 
-    <div id="mastercontent">
-      <div class="inner">
-	<div class="container">
-	  {% block content %}{% endblock %}
+    <div id="masterhead">
+      <div class="inner container">
+	{% block masterhead %}
+	  <div id="hello">
+	    <h1>Кінаклубны рух Мінска і Беларусі</h1>
+	  </div>
+	{% endblock %}
+      </div>
+    </div>
+
+      <div class="container">
+	{% block content %}{% endblock %}
+      </div>
+
+      <div id="auth-openid" class="reveal-modal nmodal">
+	<div class="modal-header">
+	  <h3>{% trans "Login via OpenID" %}:</h3>
+	  <a class="close-reveal-modal close" href="#">×</a>
+	</div>
+	<div class="modal-footer">
+	  <form action="{% url kkb_socialauth_begin "openid" %}" method="post">{% csrf_token %}
+	    <div class="soc-auth-buttons">
+	      <div class="openid-identifier"><input type="text" value="" name="openid_identifier" /><input type="submit" class="btn primary" value="{% trans "Login" %}" /></div>
+	      <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+	    </div>
+	  </form>
 	</div>
       </div>
-    </div>
 
+      {% block bottom %}{% endblock %}
 
-
-    <div id="auth-openid" class="reveal-modal nmodal">
-      <div class="modal-header">
-	<h3>{% trans "Login via OpenID" %}:</h3>
-	<a class="close-reveal-modal close" href="#">×</a>
-      </div>
-      <div class="modal-footer">
-	<form action="{% url kkb_socialauth_begin "openid" %}" method="post">{% csrf_token %}
-	  <div class="soc-auth-buttons">
-	    <div class="openid-identifier"><input type="text" value="" name="openid_identifier" /><input type="submit" class="btn primary" value="{% trans "Login" %}" /></div>
-	    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-	  </div>
-	</form>
-      </div>
-    </div>
-
-    {% block bottom %}{% endblock %}
   </body>
 </html>

@@ -1,8 +1,29 @@
 html, body {
     height: 100%;
 }
-#mastercontent .inner {
+#masterhead {
+    color: #222223;
+    background-color: #efefef;
+/*    background-image: -moz-linear-gradient(#004D9F, #049CD9); */
+    -moz-box-shadow: 0 0 6px #888888;
+    -webkit-box-shadow: 0 0 6px #888888;
+    box-shadow: 0 0 6px #888888;
+    margin-bottom: 20px;
+}
+#masterhead .inner {
     padding: 55px 0 10px 0;
+}
+#masterhead h2 {
+    color: #222223;
+    text-shadow: 0 1px 2px rgba(1, 1, 1, 0.4);
+}
+#hello h1 {
+    font-size: 48px;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 10px;
+    color: #004d9f;
 }
 /* modal forms */
 .soc-auth-buttons li {
@@ -37,6 +58,21 @@ form div.openid-identifier input[type=text] {
     margin-top: -1px;
 }
 /* topbar */
+#kinakluby {
+    padding-left: 20px;
+    padding-right: 0;
+}
+.topbar h3 span {
+    color: #9ae4e8;
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    margin-left: 0;
+    padding: 8px 20px 12px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
 .topbar ul li span {
     display: block;
     float: none;
@@ -65,8 +101,90 @@ form div.openid-identifier input[type=text] {
     vertical-align: top;
     width: 20px;
 }
-.topbar ul li span input[type=checkbox] {
-    display: inline-block;
-    margin: 3px 0 3px 2px;
-    vertical-align: top;
+/* home */
+li.right {
+    float: right;
+}
+.event-or-cinemaclub-name {
+    font-size: 13px;
+    line-height: 18px;
+}
+/* content */
+#overview-info {
+    margin-bottom: 10px;
+}
+.markdown-main p, .markdown-main ul li {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 27px;
+    color: #555556;
+}
+/* comments list */
+#comments {
+    padding-top: 10px;
+}
+#comments h2 {
+    color: #222222;
+    margin-bottom: 0px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.comment {
+    padding: 10px;
+    margin: 0;
+    font-size: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    clear: both;
+    display: block;
+    color: #222222;
+}
+.comment-avatar {
+    float:left;
+    height: 50px;
+    margin-top: 3px;
+    overflow: hidden;
+    width: 50px;
+}
+.comment-content {
+    margin-left: 60px;
+    min-height: 50px;
+    line-height: 15px;
+}
+.comment-content span.attendance-status {
+    color: #777777;
+    font-size: 12px;
+}
+.comment-text p {
+    color: #444444;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+.comment-text small {
+    color: #AAAAAA;
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
+.comment-text small:before {
+    content: "— ";
+}
+
+.center540 {
+    display: block;
+    width: 540px;
+    margin: auto;
+    padding: 0;
+}
+.textright {
+    text-align: right;
+    margin: 5px 0;
+    padding: 10px 19px;
+}
+#comment-form {
+    margin-top: 10px;
+}
+#login-to-comment-box {
+    margin-bottom: 36px;
 }

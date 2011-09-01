@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block header %}{{ block.super }}ПЕРАДПРАГЛЯД{% endblock %}
-{% block title %}{{ block.super }}ПЕРАДПРАГЛЯД{% endblock %}
+{% block header %}{{ block.super }}{% trans "PREVIEW" %}{% endblock %}
+{% block title %}{{ block.super }} / {% trans "PREVIEW" %}{% endblock %}
 
 {% block content %}
   {% load comments %}
+<div class="container">
   <div class="comment-form-form">
     <form method="post" action="/comments/post/">
       <div class="comment-form-textarea">
@@ -21,14 +22,19 @@
         {{ form.parent }}
         <div style="display: none">{{ form.honeypot }}</div>
         <input type="hidden" name="next" value="{{ next }}" />
-        <input class="comment-submit-button" type="submit" value="Адправіць" name="post">
+        <input class="comment-submit-button" type="submit" value="{% trans "Submit" %}" name="post">
       {% else %}
 	<div class="please-login">
-	  Увайдзіце праз <a href="#">Вкантакце</a>, <a href="#">Facebook</a>, <a href="#">Twitter</a>, <a href="#">Google</a> ці <a href="#">Open ID</a>, каб мець магчымасць пакідаць каментары.
+{% url plus_socialauth_begin "twitter" as twit_url %}
+{% url plus_socialauth_begin "facebook" as fb_url %}
+{% url plus_socialauth_begin "vkontakte-oauth2" as vk_url %}
+{% blocktrans with full_path=request.get_full_path%}
+Please login via <a href="{{ vk_url }}?next={{ full_path }}" rel="nofollow">Vkontakte</a>, <a href="{{ fb_url }}?next={{ full_path }}" rel="nofollow">Facebook</a>, <a href="{{ twit_url }}?next={{ full_path }}" rel="nofollow">Twitter</a> or <a href="#" data-reveal-id="auth-openid">Open ID</a> in order to leave comments
+{% endblocktrans %}
 	</div>
        {% endif %}
 
     </form>
   </div>
-  <div style="clear:both"></div>
+</div>
 {% endblock %}
