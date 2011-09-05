@@ -1,22 +1,22 @@
-
-{% extends "bootstrap.html" %}
+{% extends "bootstrap_whead.html" %}
 
 {% load markup comments %}
 
 {% block header %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
 {% block title %}{{ block.super }}{{ cinemaclub.name_short|upper }}{% endblock %}
 
-{% block content %}
-
-<div id="overview-info" class="row">
-  <img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
-  <div class="span13 columns">
-    <h2>{{ cinemaclub.name_short }}</h2>
-    {% if cinemaclub.url %}<a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a><br />{% endif %}
-    <i>{{ cinemaclub.mission }}</i>
+{% block masterhead %}
+  <div class="row">
+    <img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
+    <div class="span13 columns">
+      <h2>{{ cinemaclub.name_short }}</h2>
+      {% if cinemaclub.url %}<a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a><br />{% endif %}
+      <i>{{ cinemaclub.mission }}</i>
+    </div>
   </div>
-</div>
+{% endblock %}
 
+{% block content %}
 <div class="row">
   <div class="span11 columns">
     <div class="markdown-main">
@@ -34,7 +34,7 @@
     {% for event in upcoming_cinemaclub_events %}
       <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
       <h4 class="event-or-cinemaclub-name">
-	<a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name|upper }}</a>	
+	<a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
       </h4>
       <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
 	<img src="{{ MEDIA_URL }}{{ event.poster }}" width="280px" />

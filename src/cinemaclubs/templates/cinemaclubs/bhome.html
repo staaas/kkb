@@ -4,11 +4,6 @@
 {% block title %}{{ block.super }}МІНСКА{% endblock %}
 
 {% block content %}
-<ul class="tabs">
-  <li class="right"><a href="#">{% trans "Calendar" %}</a></li>
-  <li class="active right"><a href="#">{% trans "Upcomin events" %}</a></li>
-</ul>
-
 <div class="row">
   {% for event in upcoming_events %}
   <div class="span4 columns">

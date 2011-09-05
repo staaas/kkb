@@ -17,6 +17,12 @@ html, body {
     color: #222223;
     text-shadow: 0 1px 2px rgba(1, 1, 1, 0.4);
 }
+#homecontainer {
+    padding: 60px 0 0 0;
+}
+.main {
+    padding-bottom: 40px;
+}
 #hello h1 {
     font-size: 48px;
     line-height: 1;
@@ -72,6 +78,9 @@ form div.openid-identifier input[type=text] {
     margin-left: 0;
     padding: 8px 20px 12px 0;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    max-width: 150px;
+    overflow: hidden;
+    white-space:nowrap;
 }
 .topbar ul li span {
     display: block;
@@ -102,8 +111,15 @@ form div.openid-identifier input[type=text] {
     width: 20px;
 }
 /* home */
-li.right {
+.right {
     float: right;
+}
+.tabs li span {
+    line-height: 35px;
+    margin-bottom: -1px;
+    margin-right: 2px;
+    padding: 0 15px;
+    font-size: 17px;
 }
 .event-or-cinemaclub-name {
     font-size: 13px;
@@ -187,4 +203,7 @@ li.right {
 }
 #login-to-comment-box {
     margin-bottom: 36px;
+}
+#id_comment {
+    width: 476px;
 }
