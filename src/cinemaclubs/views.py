@@ -28,7 +28,8 @@ HOME_EVENTS_COUNT = 4
 @render_to('cinemaclubs/bhome.html')
 def minsk(request):
     upcoming_events = CinemaClubEvent.objects.filter(
-        starts_at__gte=datetime.now() - timedelta(hours=1)).order_by(
+        starts_at__gte=datetime.now() - timedelta(hours=1),
+        published=True).order_by(
         'starts_at')[:HOME_EVENTS_COUNT]
     cinemaclubs = list(CinemaClub.objects.all())
 
@@ -58,20 +59,35 @@ def cinemaclub_list(request):
 
 @render_to('cinemaclubs/bcalendar.html')
 def calendar(request):
-    return {}
+    upcoming_events = CinemaClubEvent.objects.filter(
+        starts_at__gte=datetime.now() - timedelta(hours=1),
+        published=True).order_by(
+        'starts_at').select_related('organizer')
+
+    day_dict = {}
+    for event in upcoming_events:
+        day = event.starts_at.strftime('%Y-%m-%d')
+        day_dict.setdefault(day, []).append(event)
+
+    for cur_day, cur_day_list in day_dict.items():
+        day_dict[cur_day] = sorted(cur_day_list,
+                                   key=lambda event: event.starts_at)
+
+    return {'days_dict': day_dict}
 
 @render_to('cinemaclubs/bcinemaclubevent.html')
 def cinemaclubevent(request, cinemaclub_slug, event_id):
     event = get_object_or_404(CinemaClubEvent,
                               id=event_id,
-                              organizer__slug=cinemaclub_slug)
+                              organizer__slug=cinemaclub_slug,
+                              published=True)
 
     return {'event': event}
 
 
 @render_to('cinemaclubs/bcinemaclubevent.html')
 def someevent(request, event_id):
-    event = get_object_or_404(CinemaClubEvent, id=event_id)
+    event = get_object_or_404(CinemaClubEvent, id=event_id, published=True)
     if event.organizer:
         return redirect("cinemaclubevent", event.organizer.slug, event_id,
                         permanent=True)

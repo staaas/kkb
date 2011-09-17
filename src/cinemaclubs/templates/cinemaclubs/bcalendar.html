@@ -6,66 +6,30 @@
 {% block content %}
 <h2>Календар</h2>
 <dl>
+  {% for day, day_list in days_dict.iteritems %}
 	<dd>
-		<h3>Панядзелак</h3>
+		<h3>{{ day }}</h3>
 	</dd>
 	<dt>
+		{% for event in day_list %}
 		<div class="row media_grid">
-			<a href="#"><img class="span3 columns" src="/site_media/media/eventscache/modelimg/moon_poster_display.jpg"  /></a>
+			<a href="#"><img src="{{ MEDIA_URL }}{{ event.poster }}" width="150px" /></a>
 			<div class="span13 columns">
 				<ul class="unstyled">
 					<li>
-						<h4>Прагляд кіно у галерэі</h3>
+						<h4>{{ event.name }}</h3>
 					</li>
 					<li>
-						Арганізатар: Кінаклуб.орг
+						Арганізатар: {{ event.organizer }}
 						
 					</li>
 				</ul>
 			</div>
 		</div>
+                {% endfor %}
 	</dt>
-	<dt>
-		<div class="row">
-			<img class="span3 columns" src="/site_media/media/eventscache/modelimg/moon_poster_display.jpg"  />
-			<div class="span13 columns">
-				<ul class="unstyled">
-					<li>
-						<h4>Прагляд кіно у галерэі</h3>
-					</li>
-					<li>
-						Арганізатар: Кінаклуб.орг
-					</li>
-				</ul>
-			</div>
-		</div>
-	</dt>
-	<dd>
-		<h3>Аўторак</h3>
-	</dd>
-	<dt>
-		<div class="row">
-			<a href="#"><img class="span3 columns" src="/site_media/media/eventscache/modelimg/moon_poster_display.jpg"  /></a>
-			
-			<div class="span13 columns">
-				<ul class="unstyled">
-					<li>
-						<h4>Прагляд кіно у галерэі</h3>
-					</li>
-					<li>
-						Арганізатар: Кінаклуб.орг
-					</li>
-				</ul>
-			</div>
-		</div>
-	</dt>
-	<dt></dt>
-	<dd>
-		<h3>Серада</h3>
-	</dd>
-	<dt></dt>
-	<dt></dt>
-	
+
+  {% endfor %}
 </dl>
 {% endblock %}
 

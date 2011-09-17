@@ -34,6 +34,7 @@ class CinemaClubEvent(ImageModel):
     starts_at = models.DateTimeField(null=True)
     ends_at = models.DateTimeField(null=True)
     poster = models.ImageField(null=True, upload_to=UPLOAD_DIR)
+    published = models.BooleanField(null=False, default=False)
 
     # to be translated
     name = models.CharField(max_length=150, default='')
