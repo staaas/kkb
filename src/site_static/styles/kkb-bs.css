@@ -12,6 +12,9 @@ html, body {
 }
 #masterhead .inner {
     padding: 55px 0 10px 0;
+    font-size: 1.2em;
+    line-height: 1.35;
+    color: #333334;
 }
 #masterhead h2 {
     color: #222223;
