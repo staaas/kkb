@@ -51,11 +51,14 @@ def cinemaclub_about(request, cinemaclub_slug):
     return {'cinemaclub': cinemaclub,
             'upcoming_cinemaclub_events': upcoming_cinemaclub_events}
 
-@render_to('cinemaclubs/bcinemaclubs_list.html')
-def cinemaclub_about(request, cinemaclub_slug):
+@render_to('cinemaclubs/bcinemaclub_list.html')
+def cinemaclub_list(request):
     cinemaclubs = CinemaClub.objects.all()
     return {'cinemaclubs': cinemaclubs}
 
+@render_to('cinemaclubs/bcalendar.html')
+def calendar(request):
+    return {}
 
 @render_to('cinemaclubs/bcinemaclubevent.html')
 def cinemaclubevent(request, cinemaclub_slug, event_id):

@@ -30,6 +30,13 @@ urlpatterns += patterns('',
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^logout/$', 'cinemaclubs.views.logout', name='logout'),
 
+    url(r'^cinemaclubs/$',
+        'cinemaclubs.views.cinemaclub_list',
+        name='cinemaclub_list'),
+    url(r'^calendar/$',
+        'cinemaclubs.views.calendar',
+        name='calendar'),
+
     url(r'^event/add/',
         'cinemaclubs.views.cinemaclubevent_add',
         name='cinemaclubevent_add'),

@@ -21,7 +21,7 @@
 <div class="row" style="margin-top: 30px;">
   <div class="span3 column">
     <h2>Кінаклубы</h2>
-    <a href="#">{% trans "show all" %}</a>
+    <a href="{% url cinemaclub_list %}">{% trans "show all" %}</a>
   </div>
   {% for cc in cinemaclubs %}
     <div class="span3 column">
