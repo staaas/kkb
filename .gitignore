@@ -10,3 +10,4 @@ src/media/tmpimg/*
 src/static/*
 src/.ropeproject*
 .hg
+.venv
