@@ -99,6 +99,11 @@ def logout(request):
     auth_logout(request)
     return redirect('home')
 
+def anything_logout(request, url):
+    """Logs user out and redirects to the previous page"""
+    auth_logout(request)
+    return redirect('/' + url)
+
 @login_required
 @render_to('cinemaclubs/cinemaclubevent_add.html')
 def cinemaclubevent_add(request):
