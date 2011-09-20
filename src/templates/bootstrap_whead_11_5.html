@@ -1,0 +1,12 @@
+{% extends "bootstrap_whead.html" %}
+
+{% block allcontent %}
+  <div class="row">
+    <div class="span11">
+      {% block content %}{% endblock %}
+    </div>
+    <div class="span5">
+      {% block sidecontent %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

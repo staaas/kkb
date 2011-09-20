@@ -1,4 +1,4 @@
-{% extends "bootstrap_whead.html" %}
+{% extends "bootstrap_whead_11_5.html" %}
 
 {% load markup comments %}
 
@@ -22,8 +22,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="span11 columns">
     <div class="markdown-main">
       {{ event.description|markdown }}
     </div>
@@ -33,11 +31,9 @@
 	{% render_comment_form for event %}
       </div>
     </div>
-  </div>
-  <div class="span5 columns">
-    <img src="{{ event.poster_display.url }}" width="280px" />
-  </div>
-</div>
+{% endblock %}
 
+{% block sidecontent %}
+    <img src="{{ event.poster_display.url }}" width="280px" />
 {% endblock %}
 

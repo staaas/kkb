@@ -1,4 +1,4 @@
-{% extends "bootstrap_whead.html" %}
+{% extends "bootstrap_whead_12_4.html" %}
 
 {% load markup comments %}
 
@@ -17,8 +17,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="span12 columns">
     <div class="markdown-main">
       {{ cinemaclub.description|markdown }}
     </div>
@@ -28,20 +26,18 @@
 	{% render_comment_form for cinemaclub %}
       </div>
     </div>
-  </div>
-  <div class="span4 columns">
+{% endblock %}
+
+{% block sidecontent %}
     <h5>Надыходзячыя падзеі:</h5>
     {% for event in upcoming_cinemaclub_events %}
-      <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
-      <h4 class="event-or-cinemaclub-name">
-	<a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
-      </h4>
-      <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
-	<img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
-      </a>
-      {% endfor %}
-  </div>
-</div>
-
+    <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
+    <h4 class="event-or-cinemaclub-name">
+      <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
+    </h4>
+    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
+      <img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
+    </a>
+    {% endfor %}
 {% endblock %}
 
