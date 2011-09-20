@@ -40,9 +40,8 @@
 	<div class="container fixed">
 	  <h3><a id="kinakluby" href="/">КІНАКЛУБЫ /&nbsp;</a><span>{% block header %}{% endblock %}</span></h3>
 	  <ul class="nav">
-	    {% url home as home_url %}{% url minsk as minsk_url %}<li {% if request.path == minsk_url %}class="active"{% endif %}><a href="{{ home_url }}">Надыходзячыя падзеі</a></li>
-	    <li><a href="#">Календар</a></li>
 	    <li><a href="#">Спіс кінаклубаў</a></li>
+	    <li><a href="#">Календар</a></li>
 	    <li><a href="#">Блог</a></li>
 	  </ul>
 	  <ul class="nav secondary-nav">
