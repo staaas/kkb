@@ -34,7 +34,7 @@ urlpatterns += patterns('',
         'cinemaclubs.views.anything_logout',
         name='anything_logout'),
 
-    url(r'^cinemaclubs/$',
+    url(r'^spis/$',
         'cinemaclubs.views.cinemaclub_list',
         name='cinemaclub_list'),
     url(r'^calendar/$',

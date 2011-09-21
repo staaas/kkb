@@ -54,7 +54,7 @@ def cinemaclub_about(request, cinemaclub_slug):
 
 @render_to('cinemaclubs/bcinemaclub_list.html')
 def cinemaclub_list(request):
-    cinemaclubs = CinemaClub.objects.all()
+    cinemaclubs = CinemaClub.objects.all().order_by('name')
     return {'cinemaclubs': cinemaclubs}
 
 @render_to('cinemaclubs/bcalendar.html')

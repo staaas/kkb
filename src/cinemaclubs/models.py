@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from imagekit.models import ImageModel
 from django.conf import settings
 
@@ -26,6 +27,9 @@ class CinemaClub(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('cinemaclub_about', args=[self.slug,])
 
 class CinemaClubEvent(ImageModel):
     id = models.AutoField(primary_key = True)
