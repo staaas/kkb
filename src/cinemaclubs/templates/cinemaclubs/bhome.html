@@ -1,4 +1,4 @@
-{% extends "bootstrap.html" %}{% load i18n %}
+{% extends "bootstrap.html" %}{% load i18n blogtags %}
 
 {% block header %}{{ block.super }}МІНСКА{% endblock %}
 {% block title %}{{ block.super }}МІНСКА{% endblock %}
@@ -29,7 +29,16 @@
       <h3 class="event-or-cinemaclub-name"><a href="{% url cinemaclub_about cc.slug %}">{{ cc.name }}</a></h3>
     </div>
   {% endfor %}
-  <div style="clear: both"></div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+  <div class="span3 column">
+    <h2>Блог <small>апошні допіс</small></h2>
+    <a href="{% url cinemaclub_list %}">{% trans "show all" %}</a>
+  </div>
+  <div class="span13 column">
+    {% recent_blog_entry %}
+  </div>
 </div>
 
 {% endblock %}
