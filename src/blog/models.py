@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
+from django.core.urlresolvers import reverse
 
 
 class BlogEntry(models.Model):
@@ -24,4 +25,9 @@ class BlogEntry(models.Model):
     text = models.TextField(default='',
                             verbose_name=_(u'Text'))
 
+    def get_absolute_url(self):
+        return reverse('blog_post_detail', args=[self.published_at.year,
+                                                 self.published_at.month,
+                                                 self.published_at.day,
+                                                 self.slug])
 
