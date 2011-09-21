@@ -28,6 +28,7 @@ urlpatterns += patterns('',
     url(r'^minska/$', 'cinemaclubs.views.minsk', name='minsk'),
 
     url(r'^comments/', include('django.contrib.comments.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^logout/$', 'cinemaclubs.views.logout', name='logout'),
     url(r'^(?P<url>[\w\d/]*)logout/',
         'cinemaclubs.views.anything_logout',

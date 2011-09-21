@@ -43,7 +43,7 @@
 	    <li><a href="#">Спіс кінаклубаў</a></li>
 	    {% url home as home_url %}<li {% if request.full_path == home_url %}class="active"{% endif %}><a href="{{ home_url }}">Надыходзячыя падзеі</a></li>
 	    <li><a href="#">Календар</a></li>
-	    <li><a href="#">Блог</a></li>
+	    <li><a href="{% url blog_posts %}">Блог</a></li>
 	  </ul>
 	  <ul class="nav secondary-nav">
             <li class="menu">

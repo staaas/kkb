@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'social_auth',
     'cinemaclubs',
+    'blog',
     'imagekit',
 )
 

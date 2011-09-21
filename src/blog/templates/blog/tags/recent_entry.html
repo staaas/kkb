@@ -1,0 +1,7 @@
+{% if post %}
+  <div class="blog-entry">
+    <h4><a href="{% url blog_post_detail post.published_at.year post.published_at.month post.published_at.day post.slug %}">{{ post.title}}</a></h4>
+    <p>{{ post.description|linebreaksbr }}</p>
+    <small>{{ post.published_at|date:"j E Y г. G:i" }}</small>
+  </div>
+{% endif %}

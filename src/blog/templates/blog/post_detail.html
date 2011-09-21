@@ -1,0 +1,23 @@
+{% extends "bootstrap_whead.html" %}
+
+{% load markup comments %}
+
+{% block title %}{{ block.super }}БЛОГ - {{ post.title }}{% endblock %}
+{% block header %}{{ block.super }}БЛОГ{% endblock %}
+
+{% block masterhead %}
+<h2>{{ post.title }}</h2>
+<small>{{ post.published_at|date:"j E Y г. G:i" }}</small>
+{% endblock %}
+
+{% block allcontent %}
+    <div class="markdown-main">
+      {{ post.text|markdown }}
+    </div>
+    <div id="comments">
+      {% render_comment_list for post %}
+      <div id="addcomment">
+	{% render_comment_form for post %}
+      </div>
+    </div>
+{% endblock %}

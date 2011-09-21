@@ -192,3 +192,14 @@ form div.openid-identifier input[type=text] {
 #id_comment {
     width: 476px;
 }
+/* blog */
+.blog-entry small:before {
+    content: "— ";
+}
+.blog-entry small {
+    color: #BFBFBF;
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
