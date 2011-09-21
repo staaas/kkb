@@ -10,6 +10,6 @@ def recent_blog_entry():
     try:
         recent_entry = BlogEntry.objects.filter(
             published=True).order_by('-published_at')[0]
-    except BlogEntry.DoesNotExst:
+    except BlogEntry.DoesNotExist:
         recent_entry = None
     return {'post': recent_entry}
