@@ -55,6 +55,10 @@ class CinemaClubEvent(ImageModel):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('cinemaclubevent', args=[self.organizer.slug,
+                                                self.id,])
+
 TMP_UPLOAD_DIR = 'tmpimg'
 
 class TemporaryImage(ImageModel):
