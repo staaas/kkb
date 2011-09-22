@@ -11,12 +11,13 @@
   {% for cinemaclub in cinemaclubs %}
     <li>
       <div class="row">
-	<img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
 	<div class="span13 columns">
           <h4>{{ cinemaclub.name }} {% if cinemaclub.url %}<small><a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a></small>{% endif %}</h4>
           <i>{{ cinemaclub.mission }}</i>
 	  <p><a href="{{ cinemaclub.get_absolute_url }}">{% trans "(more)" %}</a></p>
 	</div>
+	<img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
+
       </div>
     </li>
   {% endfor %}
