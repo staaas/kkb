@@ -1,34 +1,27 @@
 {% extends "bootstrap.html" %}{% load i18n %}
 
-{% block header %}{{ block.super }}МІНСКА{% endblock %}
-{% block title %}{{ block.super }}МІНСКА{% endblock %}
+{% block header %}{{ block.super }}КАЛЕНДАР{% endblock %}
+{% block title %}{{ block.super }}КАЛЕНДАР{% endblock %}
 
 {% block content %}
-<h2>Календар</h2>
 <dl>
   {% for day, day_list in days_dict.iteritems %}
-	<dd>
-		<h3>{{ day }}</h3>
-	</dd>
-	<dt>
-		{% for event in day_list %}
-		<div class="row media_grid">
-			<a href="#"><img src="{{ MEDIA_URL }}{{ event.poster }}" width="150px" /></a>
-			<div class="span13 columns">
-				<ul class="unstyled">
-					<li>
-						<h4>{{ event.name }}</h3>
-					</li>
-					<li>
-						Арганізатар: {{ event.organizer }}
-						
-					</li>
-				</ul>
-			</div>
-		</div>
-                {% endfor %}
-	</dt>
-
+  <dd>
+    <h2>{{ day }}</h2>
+  </dd>
+  <dt>
+    {% for event in day_list %}
+    <div class="row media_grid">
+      <div class="span12 offset1 columns">
+	<h4><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h4>
+	<p><i>{{ event.short_description|linebreaksbr }}</i></p>
+        <p>Арганізатар: <a href="{{ event.organizer.get_absolute_url }}">{{ event.organizer }}</a></p>
+	<p>Пачатак: {{ event.starts_at|date:"j E, G:i" }}</p>
+      </div>
+      <a href="{{ event.get_absolute_url }}" class="span3"><img src="{{ MEDIA_URL }}{{ event.poster }}" width="150px" /></a>
+    </div>
+    {% endfor %}
+  </dt>
   {% endfor %}
 </dl>
 {% endblock %}

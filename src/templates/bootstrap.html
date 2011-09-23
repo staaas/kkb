@@ -42,9 +42,10 @@
 	<div class="container fixed">
 	  <h3><a id="kinakluby" href="/">КІНАКЛУБЫ /&nbsp;</a><span>{% block header %}{% endblock %}</span></h3>
 	  <ul class="nav">
-	    <li><a href="#">Спіс кінаклубаў</a></li>
-	    <li><a href="#">Календар</a></li>
-	    <li><a href="{% url blog_posts %}">Блог</a></li>
+	    {% url cinemaclub_list as list_url %}{% if request.path != list_url %}<li><a href="{{ list_url }}">Спіс кінаклубаў</a></li>{% endif %}
+	    {% url minsk as upcoming_url %}{% if request.path != upcoming_url %}<li><a href="{{ upcoming_url }}">Надыходзячыя падзеі</a></li>{% endif %}
+	    {% url calendar as calendar_url %}{% if request.path != calendar_url %}<li><a href="{{ calendar_url }}">Календар</a></li>{% endif %}
+	    {% url blog_posts as blog_url %}{% if request.path != blog_url %}<li><a href="{{ blog_url }}">Блог</a></li>{% endif %}
 	  </ul>
 	  <ul class="nav secondary-nav">
             <li class="menu">

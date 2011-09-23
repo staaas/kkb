@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.files.images import get_image_dimensions
 from django.core.files.base import ContentFile, File
+from django.utils.translation import ugettext as _
+from django.utils.formats import date_format
 from social_auth.views import auth as social_auth_begin
 
 from commonutils.decorators import render_to
@@ -54,8 +56,21 @@ def cinemaclub_about(request, cinemaclub_slug):
 
 @render_to('cinemaclubs/bcinemaclub_list.html')
 def cinemaclub_list(request):
-    cinemaclubs = CinemaClub.objects.all()
+    cinemaclubs = CinemaClub.objects.all().order_by('name')
     return {'cinemaclubs': cinemaclubs}
+
+def _get_calendar_day(date):
+    '''
+    Returns date represented as a fancy string to be
+    displayed at calendar page.
+    '''
+    now = datetime.now()
+    if date.strftime('%Y/%m/%d') == now.strftime('%Y/%m/%d'):
+        return _(u"Today")
+    tomorrow = now + timedelta(days=1)
+    if date.strftime('%Y/%m/%d') == tomorrow.strftime('%Y/%m/%d'):
+        return _(u"Tomorrow")
+    return date_format(date)
 
 @render_to('cinemaclubs/bcalendar.html')
 def calendar(request):
@@ -66,7 +81,7 @@ def calendar(request):
 
     day_dict = {}
     for event in upcoming_events:
-        day = event.starts_at.strftime('%Y-%m-%d')
+        day = _get_calendar_day(event.starts_at)
         day_dict.setdefault(day, []).append(event)
 
     for cur_day, cur_day_list in day_dict.items():

@@ -1,8 +1,26 @@
 {% extends "bootstrap.html" %}{% load i18n %}
 
-{% block header %}{{ block.super }}МІНСКА{% endblock %}
-{% block title %}{{ block.super }}МІНСКА{% endblock %}
+{% block header %}{{ block.super }}СПІС{% endblock %}
+{% block title %}{{ block.super }}СПІС{% endblock %}
 
 {% block content %}
+  <div class="page-header">
+    <h1>Спіс кінаклубаў Мінска</h1>
+  </div>
+  <ul class="unstyled" id="cinemaclub-list">
+  {% for cinemaclub in cinemaclubs %}
+    <li>
+      <div class="row">
+	<div class="span13 columns">
+          <h4>{{ cinemaclub.name }} {% if cinemaclub.url %}<small><a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a></small>{% endif %}</h4>
+          <i>{{ cinemaclub.mission }}</i>
+	  <p><a href="{{ cinemaclub.get_absolute_url }}">{% trans "(more)" %}</a></p>
+	</div>
+	<img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
+
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
 {% endblock %}
 

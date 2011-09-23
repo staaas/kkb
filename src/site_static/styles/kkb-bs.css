@@ -204,3 +204,10 @@ form div.openid-identifier input[type=text] {
     font-weight: 300;
     line-height: 18px;
 }
+/* cinemaclub list */
+#cinemaclub-list li:first-child {
+    margin-top: 0;
+}
+#cinemaclub-list li {
+    margin-top: 10px;
+}
