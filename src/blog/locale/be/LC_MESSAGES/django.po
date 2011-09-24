@@ -1,0 +1,68 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-24 16:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:13
+msgid "Publishing"
+msgstr "Публікацыя"
+
+#: admin.py:21
+msgid "Publish"
+msgstr "Апублікаваць"
+
+#: admin.py:25
+msgid "Unpublish"
+msgstr "Зняць з публікацыі"
+
+#: feeds.py:9
+msgid "KINA.KLU.BY / BLOG"
+msgstr "кіна.клу.бы / блог"
+
+#: feeds.py:11
+msgid ""
+"Blog about cinema clubs and amateur '                    'cinema movement in "
+"Belarus"
+msgstr "Блог пра кінаклубы і аматарскае кіно ў Беларусі."
+
+#: models.py:12
+msgid "Slug"
+msgstr ""
+
+#: models.py:14
+msgid "Published"
+msgstr "Апублікавана"
+
+#: models.py:16
+msgid "Published at"
+msgstr "Час публікацыі"
+
+#: models.py:18
+msgid "Author"
+msgstr "Аўтар"
+
+#: models.py:22
+msgid "Title"
+msgstr "Назва"
+
+#: models.py:24
+msgid "Description"
+msgstr "Апісанне"
+
+#: models.py:26
+msgid "Text"
+msgstr "Тэкст"

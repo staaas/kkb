@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-24 16:56+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:17
+msgid "Scheduling"
+msgstr "Расклад"
+
+#: admin.py:18
+msgid "Images"
+msgstr "Выявы"
+
+#: admin.py:28
+msgid "Publish"
+msgstr "Апублікаваць"
+
+#: admin.py:32
+msgid "Unpublish"
+msgstr "Зняць з публікацыі"
+
+#: forms.py:51
+msgid "The selection width exceeds the original width."
+msgstr ""
+
+#: forms.py:53
+msgid "The selection height exceeds the original height."
+msgstr ""
+
+#: forms.py:55
+msgid "The selection doen't lie inside the image area."
+msgstr ""
+
+#: views.py:79
+msgid "Today"
+msgstr "Сёння"
+
+#: views.py:82
+msgid "Tomorrow"
+msgstr "Заўтра"
+
+#: templates/cinemaclubs/bcinemaclub_list.html:17
+msgid "(more)"
+msgstr "(яшчэ)"
+
+#: templates/cinemaclubs/bhome.html:24
+msgid "show all"
+msgstr "паказаць усе"
+
+#: templates/cinemaclubs/bhome.html:37
+msgid "all posts"
+msgstr "усе допісы"
