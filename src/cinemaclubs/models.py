@@ -12,7 +12,7 @@ IMG_MIN_SIZE = 300
 class CinemaClub(ImageModel):
     id = models.AutoField(primary_key = True)
 #    geo_coordinates = models.CharField(max_length=50)
-    url = models.CharField(max_length=256)
+    url = models.CharField(max_length=256, null=True, blank=True)
     logo = models.ImageField(null=True, upload_to=UPLOAD_DIR)
 
     slug = models.SlugField(max_length=40, default='')
