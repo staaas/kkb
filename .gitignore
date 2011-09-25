@@ -6,7 +6,7 @@
 src/settings_local.py
 src/media/modelimg/*
 src/media/eventscache/*
-src/media/tmpimg/*
+src/media/cinemaclubscache/*
 src/static/*
 src/.ropeproject*
 .hg

@@ -41,7 +41,7 @@ class CinemaClubEvent(ImageModel):
     organizer = models.ForeignKey('CinemaClub')
 #    geo_coordinates = models.CharField(max_length=50)
     starts_at = models.DateTimeField(null=True)
-    ends_at = models.DateTimeField(null=True)
+    ends_at = models.DateTimeField(null=True, blank=True)
     poster = models.ImageField(null=True, upload_to=UPLOAD_DIR)
     published = models.BooleanField(null=False, default=False)
 
