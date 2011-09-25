@@ -7,7 +7,8 @@
 <div class="row">
   {% for event in upcoming_events %}
   <div class="span4 columns">
-    <a href="{{ event.get_absolute_url }}">	<img src="{{ event.poster_thumbnail.url }}" width="220px" />
+    <a href="{{ event.get_absolute_url }}">
+      <img src="{{ event.poster_span4.url }}" width="220px" />
     </a>
     <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
     <h3 class="event-or-cinemaclub-name"><a href="{{ event.get_absolute_url }}">{{ event.name|upper }}</a></h3>
@@ -25,7 +26,7 @@
   </div>
   {% for cc in cinemaclubs %}
     <div class="span3 column">
-      <img src="{{ MEDIA_URL }}{{ cc.logo }}" width="160px" />
+      <img src="{{ cc.logo_span3.url }}" width="160px" />
       <h3 class="event-or-cinemaclub-name"><a href="{% url cinemaclub_about cc.slug %}">{{ cc.name }}</a></h3>
     </div>
   {% endfor %}

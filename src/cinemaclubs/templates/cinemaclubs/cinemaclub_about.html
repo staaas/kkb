@@ -7,7 +7,7 @@
 
 {% block masterhead %}
   <div class="row">
-    <img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
+    <img class="span3 columns" src="{{ cinemaclub.logo_span3.url }}" />
     <div class="span13 columns">
       <h2>{{ cinemaclub.name }}</h2>
       {% if cinemaclub.url %}<a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a><br />{% endif %}
@@ -36,10 +36,10 @@
         <li>
   	  <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
 	  <h4 class="event-or-cinemaclub-name">
-	    <a href="{{ event.get_absolute_url }}>{{ event.name }}</a>	
+	    <a href="{{ event.get_absolute_url }}">{{ event.name }}</a>	
 	  </h4>
-	  <a href="{{ event.get_absolute_url }}>
-	    <img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
+	  <a href="{{ event.get_absolute_url }}">
+	    <img src="{{ event.poster_span4.url }}" />
 	  </a>
 	</li>
 	{% endfor %}
@@ -54,7 +54,7 @@
 	{% for event in past_events %}
 	<li>
 	  <h4 class="event-or-cinemaclub-name">
-	    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
+	    <a href="{{ event.get_absolute_url }}">{{ event.name }}</a>	
 	  </h4>
 	</li>
 	{% endfor %}

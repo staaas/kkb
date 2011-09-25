@@ -9,7 +9,7 @@ UPLOAD_DIR = 'modelimg'
 IMG_MAX_SIZE = 1024
 IMG_MIN_SIZE = 300
 
-class CinemaClub(models.Model):
+class CinemaClub(ImageModel):
     id = models.AutoField(primary_key = True)
 #    geo_coordinates = models.CharField(max_length=50)
     url = models.CharField(max_length=256)
@@ -24,6 +24,11 @@ class CinemaClub(models.Model):
     name_short = models.CharField(max_length=40, default='')  # slug for header
 
     curators = models.ManyToManyField(User, related_name='cinemaclubs')
+
+    class IKOptions:
+        spec_module = 'cinemaclubs.imagekit_cinemaclub'
+        cache_dir = 'cinemaclubscache'
+        image_field = 'logo'
 
     def __unicode__(self):
         return self.name
@@ -46,11 +51,9 @@ class CinemaClubEvent(ImageModel):
     description = models.TextField(default='')
 
     class IKOptions:
-        # This inner class is where we define the ImageKit options for the model
-        spec_module = 'cinemaclubs.ikspecs'
+        spec_module = 'cinemaclubs.imagekit_event'
         cache_dir = 'eventscache'
         image_field = 'poster'
-        # save_count_as = 'num_views'
 
     def __unicode__(self):
         return self.name

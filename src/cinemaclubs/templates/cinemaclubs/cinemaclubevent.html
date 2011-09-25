@@ -8,7 +8,7 @@
 {% block masterhead %}
   <div class="row">
     {% if event.organizer %}
-    <img class="span3 columns" src="{{ MEDIA_URL }}{{ event.organizer.logo }}"  />
+    <img class="span3 columns" src="{{ event.organizer.logo_span3.url }}"  />
     {% endif %}
     <div class="span13 columns">
       <h2>{{ event.name }}</h2>
@@ -34,6 +34,6 @@
 {% endblock %}
 
 {% block sidecontent %}
-    <img src="{{ event.poster_display.url }}" width="280px" />
+    <img src="{{ event.poster_span5.url }}" width="280px" />
 {% endblock %}
 
