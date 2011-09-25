@@ -12,6 +12,7 @@
     </a>
     <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
     <h3 class="event-or-cinemaclub-name"><a href="{{ event.get_absolute_url }}">{{ event.name|upper }}</a></h3>
+    <p><a href="{{ event.organizer.get_absolute_url }}">{{ event.organizer.name_short }}</a></p>
     <p>{{ event.short_description }}<br />
       <a href="{{ event.get_absolute_url }}" class="more">(чытаць далей)</a>
     </p>
