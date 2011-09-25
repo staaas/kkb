@@ -25,7 +25,7 @@
     <a href="{% url cinemaclub_list %}">{% trans "show all" %}</a>
   </div>
   {% for cc in cinemaclubs %}
-    <div class="span3 column">
+    <div class="span3 column center">
       <img src="{{ cc.logo_span3.url }}" width="160px" />
       <h3 class="event-or-cinemaclub-name"><a href="{% url cinemaclub_about cc.slug %}">{{ cc.name }}</a></h3>
     </div>

@@ -211,3 +211,7 @@ form div.openid-identifier input[type=text] {
 #cinemaclub-list li {
     margin-top: 10px;
 }
+
+.center {
+    text-align: center;
+}
