@@ -1,4 +1,4 @@
-{% extends "bootstrap_whead_12_4.html" %}
+{% extends "base_whead_12_4.html" %}
 
 {% load markup comments %}
 
@@ -36,9 +36,9 @@
         <li>
   	  <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
 	  <h4 class="event-or-cinemaclub-name">
-	    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
+	    <a href="{{ event.get_absolute_url }}>{{ event.name }}</a>	
 	  </h4>
-	  <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
+	  <a href="{{ event.get_absolute_url }}>
 	    <img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
 	  </a>
 	</li>

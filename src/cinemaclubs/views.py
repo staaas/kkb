@@ -27,7 +27,7 @@ def kkb_socialauth_begin(request, backend):
 HOME_CINEMACLUBS_COUNT = 4
 HOME_EVENTS_COUNT = 4
 
-@render_to('cinemaclubs/bhome.html')
+@render_to('cinemaclubs/home.html')
 def minsk(request):
     upcoming_events = CinemaClubEvent.objects.filter(
         starts_at__gte=datetime.now() - timedelta(hours=1),
@@ -44,7 +44,7 @@ def minsk(request):
 def home(request):
     return redirect('minsk', permanent=False)
 
-@render_to('cinemaclubs/bcinemaclub_about.html')
+@render_to('cinemaclubs/cinemaclub_about.html')
 def cinemaclub_about(request, cinemaclub_slug):
     cinemaclub = get_object_or_404(CinemaClub,
                                    slug=cinemaclub_slug)
@@ -61,7 +61,7 @@ def cinemaclub_about(request, cinemaclub_slug):
             'upcoming_events': upcoming_events,
             'past_events': past_events}
 
-@render_to('cinemaclubs/bcinemaclub_list.html')
+@render_to('cinemaclubs/cinemaclub_list.html')
 def cinemaclub_list(request):
     cinemaclubs = CinemaClub.objects.all().order_by('name')
     return {'cinemaclubs': cinemaclubs}
@@ -82,7 +82,7 @@ def _get_day_display(date):
         return _(u"Tomorrow")
     return date_format(datetime.strptime(date, _DATE_STR_FORMAT))
 
-@render_to('cinemaclubs/bcalendar.html')
+@render_to('cinemaclubs/calendar.html')
 def calendar(request):
     upcoming_events = CinemaClubEvent.objects.filter(
         starts_at__gte=datetime.now() - timedelta(hours=1),
@@ -102,7 +102,7 @@ def calendar(request):
                     sorted(days_list, key=lambda x: x[0])]
     return {'days_list': days_list}
 
-@render_to('cinemaclubs/bcinemaclubevent.html')
+@render_to('cinemaclubs/cinemaclubevent.html')
 def cinemaclubevent(request, cinemaclub_slug, event_id):
     event = get_object_or_404(CinemaClubEvent,
                               id=event_id,
@@ -112,7 +112,7 @@ def cinemaclubevent(request, cinemaclub_slug, event_id):
     return {'event': event}
 
 
-@render_to('cinemaclubs/bcinemaclubevent.html')
+@render_to('cinemaclubs/cinemaclubevent.html')
 def someevent(request, event_id):
     event = get_object_or_404(CinemaClubEvent, id=event_id, published=True)
     if event.organizer:

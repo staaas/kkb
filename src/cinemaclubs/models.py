@@ -56,8 +56,11 @@ class CinemaClubEvent(ImageModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('cinemaclubevent', args=[self.organizer.slug,
-                                                self.id,])
+        if self.organizer:
+            return reverse('cinemaclubevent', args=[self.organizer.slug,
+                                                    self.id,])
+        return reverse('someevent', args=[self.id,])
+        
 
 TMP_UPLOAD_DIR = 'tmpimg'
 

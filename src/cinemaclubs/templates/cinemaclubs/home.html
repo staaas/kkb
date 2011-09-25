@@ -1,4 +1,4 @@
-{% extends "bootstrap.html" %}{% load i18n blogtags %}
+{% extends "base.html" %}{% load i18n blogtags %}
 
 {% block header %}{{ block.super }}МІНСКА{% endblock %}
 {% block title %}{{ block.super }}МІНСКА{% endblock %}
@@ -7,12 +7,12 @@
 <div class="row">
   {% for event in upcoming_events %}
   <div class="span4 columns">
-    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">	<img src="{{ event.poster_thumbnail.url }}" width="220px" />
+    <a href="{{ event.get_absolute_url }}">	<img src="{{ event.poster_thumbnail.url }}" width="220px" />
     </a>
     <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
-    <h3 class="event-or-cinemaclub-name"><a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name|upper }}</a></h3>
+    <h3 class="event-or-cinemaclub-name"><a href="{{ event.get_absolute_url }}">{{ event.name|upper }}</a></h3>
     <p>{{ event.short_description }}<br />
-      <a href="{% include "cinemaclubs/snippet_event_url.html" %}" class="more">(чытаць далей)</a>
+      <a href="{{ event.get_absolute_url }}" class="more">(чытаць далей)</a>
     </p>
   </div>
   {% endfor %}
