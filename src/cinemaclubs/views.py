@@ -3,6 +3,7 @@ import os.path
 import random
 from datetime import timedelta, datetime
 
+from django.conf import settings
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import get_object_or_404, redirect
@@ -130,6 +131,14 @@ def anything_logout(request, url):
     """Logs user out and redirects to the previous page"""
     auth_logout(request)
     return redirect('/' + url)
+
+@render_to('autherror.html')
+def auth_error(request):
+    """Auth error view"""
+    from social_auth import __version__ as version
+    error_msg = request.session.pop(settings.SOCIAL_AUTH_ERROR_KEY, None)
+    return {'version': version,
+            'error_msg': error_msg}
 
 # @login_required
 # @render_to('cinemaclubs/cinemaclubevent_add.html')

@@ -22,6 +22,7 @@ urlpatterns += patterns('',
     url(r'^soc/login/(?P<backend>[^/]+)/$',
         'cinemaclubs.views.kkb_socialauth_begin',
         name='kkb_socialauth_begin'),
+    url(r'^auth-error/$', 'cinemaclubs.views.auth_error', name='error'),
     url(r'^soc/', include('social_auth.urls')),
 
     url(r'^$', 'cinemaclubs.views.home', name='home'),

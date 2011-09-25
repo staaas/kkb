@@ -176,13 +176,17 @@ LOGGING = {
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
-    'social_auth.backends.google.GoogleOAuth2Backend',
     'social_auth.backends.OpenIDBackend',
+    'social_auth_extra_services.vkontakte.VKontakteOAuth2Backend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_IMPORT_BACKENDS = (
+    'social_auth_extra_services',
+)
 DEFAULT_SOCIAL_AVATAR =  STATIC_URL + 'img/default_avatar.png'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
+SOCIAL_AUTH_ERROR_KEY = 'SOCIAL_AUTH_ERROR_KEY'
 
 LOGIN_URL          = '/login/'
 LOGIN_REDIRECT_URL = '/minska/'

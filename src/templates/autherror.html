@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  <p>Прабачце, але з-за памылкі вы не можаце ўвайсці</p>
+  {% if error_msg %}
+    <p>Дэталіs:</p>
+    <p class="error">{{ error_msg }}</p>
+  {% endif %}
+  <p>Калі ласка, паспрабуйе ізноў: <a href="/">галоўная старонка</a></p>
+</div>
+{% endblock %}
