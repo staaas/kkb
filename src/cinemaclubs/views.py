@@ -54,8 +54,8 @@ def cinemaclub_about(request, cinemaclub_slug):
     past_limit = datetime.now() - timedelta(hours=1)
     upcoming_events = [event for event in all_cinemaclub_events if \
                            event.starts_at > past_limit]
-    past_events = reversed([event for event in all_cinemaclub_events if \
-                               event.starts_at <= past_limit])
+    past_events = list(reversed([event for event in all_cinemaclub_events if \
+                               event.starts_at <= past_limit]))
 
     return {'cinemaclub': cinemaclub,
             'upcoming_events': upcoming_events,

@@ -24,9 +24,9 @@
       </fieldset>
     </form>
 {% else %}
-{% url plus_socialauth_begin "twitter" as twit_url %}
-{% url plus_socialauth_begin "facebook" as fb_url %}
-{% url plus_socialauth_begin "vkontakte-oauth2" as vk_url %}
+{% url kkb_socialauth_begin "twitter" as twit_url %}
+{% url kkb_socialauth_begin "facebook" as fb_url %}
+{% url kkb_socialauth_begin "vkontakte-oauth2" as vk_url %}
 <h3>{% trans "Leave comment" %}</h3>
 <div class="alert-message block-message error" id="login-to-comment-box">
   <p id="login-to-comment">

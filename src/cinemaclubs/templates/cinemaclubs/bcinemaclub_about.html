@@ -30,28 +30,35 @@
 
 {% block sidecontent %}
     <h5>Надыходзячыя падзеі:</h5>
-    <ul class="unstyled">
-      {% for event in upcoming_events %}
-      <li>
-	<b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
-	<h4 class="event-or-cinemaclub-name">
-	  <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
-	</h4>
-	<a href="{% include "cinemaclubs/snippet_event_url.html" %}">
-	  <img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
-	</a>
-      </li>
-      {% endfor %}
-    </ul>
-    <h5>Мінулыя падзеі:</h5>
-    <ul>
-    {% for event in past_events %}
-    <li>
-      <h4 class="event-or-cinemaclub-name">
-	<a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
-      </h4>
-    </li>
-    {% endfor %}
-    </ul>
+    {% if upcoming_events %}
+      <ul class="unstyled">
+        {% for event in upcoming_events %}
+        <li>
+  	  <b>{{ event.starts_at|date:"j E Y г. G:i" }}</b><br>
+	  <h4 class="event-or-cinemaclub-name">
+	    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
+	  </h4>
+	  <a href="{% include "cinemaclubs/snippet_event_url.html" %}">
+	    <img src="{{ MEDIA_URL }}{{ event.poster }}" width="220px" />
+	  </a>
+	</li>
+	{% endfor %}
+      </ul>
+    {% else %}
+      няма
+    {% endif %}
+
+    {% if past_events %}
+      <h5>Мінулыя падзеі:</h5>
+      <ul>
+	{% for event in past_events %}
+	<li>
+	  <h4 class="event-or-cinemaclub-name">
+	    <a href="{% include "cinemaclubs/snippet_event_url.html" %}">{{ event.name }}</a>	
+	  </h4>
+	</li>
+	{% endfor %}
+      </ul>
+    {% endif %}
 {% endblock %}
 

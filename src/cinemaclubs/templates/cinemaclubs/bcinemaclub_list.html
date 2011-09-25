@@ -14,9 +14,13 @@
 	<div class="span13 columns">
           <h4>{{ cinemaclub.name }} {% if cinemaclub.url %}<small><a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a></small>{% endif %}</h4>
           <i>{{ cinemaclub.mission }}</i>
-	  <p><a href="{{ cinemaclub.get_absolute_url }}">{% trans "(more)" %}</a></p>
+	  <p><a href="{{ cinemaclub.get_absolute_url }}">{% trans "(апісанне / расклад)" %}</a></p>
 	</div>
-	<img class="span3 columns" src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" />
+	<div class="span3 columns">
+	  <a href="{{ cinemaclub.get_absolute_url }}" alt="{{ cinemaclub.name }}">
+	    <img src="{{ MEDIA_URL }}{{ cinemaclub.logo }}" width="160px" />
+	  </a>
+	</div>
 
       </div>
     </li>
