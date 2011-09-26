@@ -22,8 +22,8 @@ def socialize_users(users_list):
         # default values
         soc_username = usr.username
         soc_link = ''
-        soc_avatar = DEFAULT_AVATAR
         soc_provider = ''
+        soc_uid = ''
 
         if soc is None:
             pass
@@ -35,31 +35,28 @@ def socialize_users(users_list):
             soc_username = screen_name or usr.username
             soc_link = 'http://twitter.com/%s' % screen_name if \
                 screen_name else ''
-            soc_avatar = 'http://img.tweetimag.es/i/%s' % screen_name if \
-                screen_name else DEFAULT_AVATAR
+            soc_uid = soc.uid
             soc_provider = soc.provider
         elif soc.provider == 'facebook':
             soc_username = ('%s %s' % (usr.first_name, usr.last_name)).strip() or usr.username
             soc_link = 'https://www.facebook.com/profile.php?id=%s' % soc.uid
-            soc_avatar = 'http://graph.facebook.com/%s/picture' % soc.uid
+            soc_uid = soc.uid
             soc_provider = soc.provider
         elif soc.provider == 'vkontakte-oauth2':
             soc_username = ('%s %s' % (usr.first_name, usr.last_name)).strip() or usr.username
             soc_link = 'https://vkontakte.ru/id%s' % soc.uid
             soc_provider = 'vkontakte'
-            try:
-                soc_avatar = soc.extra_data.get('response', {}).get('user_photo') or DEFAULT_AVATAR
-            except (TypeError, ValueError, AttributeError):
-                soc_avatar = DEFAULT_AVATAR
+            soc_uid = soc.uid
             usr.vk_id = soc.uid
         elif soc.provider == 'openid':
             soc_username = ('%s %s' % (usr.first_name, usr.last_name)).strip() or usr.username
             soc_link = soc.uid
+            soc_uid = soc.uid
             soc_provider = soc.provider
 
         usr.soc_username = soc_username
         usr.soc_link = soc_link
-        usr.soc_avatar = soc_avatar
+        usr.soc_avatar = get_avatarizator_link(soc_provider, soc_uid, avatarizator_key)
         usr.soc_provider = soc_provider
 
     return users_list
