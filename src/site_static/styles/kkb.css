@@ -115,9 +115,47 @@ form div.openid-identifier input[type=text] {
 #overview-info {
     margin-bottom: 10px;
 }
-.markdown-main h1, .markdown-main h2, .markdown-main h3, .markdown-main h4, .markdown-main h5, .markdown-main h6, .markdown-main p, .markdown-main blockquote, .markdown-main pre, .markdown-main a, .markdown-main abbr, .markdown-main acronym, .markdown-main address, .markdown-main cite, .markdown-main code, .markdown-main del, .markdown-main dfn, .markdown-main em, .markdown-main img, .markdown-main q, .markdown-main s, .markdown-main samp, .markdown-main small, .markdown-main strike, .markdown-main strong, .markdown-main sub, .markdown-main sup, .markdown-main tt, .markdown-main var, .markdown-main dd, .markdown-main dl, .markdown-main dt, .markdown-main li, .markdown-main ol, .markdown-main ul, .markdown-main fieldset, .markdown-main form, .markdown-main label, .markdown-main legend, .markdown-main button, .markdown-main table, .markdown-main caption, .markdown-main tbody, .markdown-main tfoot, .markdown-main thead, .markdown-main tr, .markdown-main th, .markdown-main td {
+.markdown-main p, .markdown-main blockquote, .markdown-main pre, .markdown-main abbr, .markdown-main acronym, .markdown-main address, .markdown-main cite, .markdown-main code, .markdown-main del, .markdown-main dfn, .markdown-main em, .markdown-main img, .markdown-main q, .markdown-main s, .markdown-main samp, .markdown-main small, .markdown-main strike, .markdown-main strong, .markdown-main sub, .markdown-main sup, .markdown-main tt, .markdown-main var, .markdown-main dd, .markdown-main dl, .markdown-main dt, .markdown-main li, .markdown-main ol, .markdown-main ul, .markdown-main fieldset, .markdown-main form, .markdown-main label, .markdown-main legend, .markdown-main button, .markdown-main table, .markdown-main caption, .markdown-main tbody, .markdown-main tfoot, .markdown-main thead, .markdown-main tr, .markdown-main th, .markdown-main td {
     font-size: 16px;
     font-weight: 200;
+    line-height: 24px;
+    color: #555555;
+}
+.markdown-main a {
+}
+.markdown-main h1 {
+    font-size: 20px;
+    font-weight: 260;
+    line-height: 26px;
+    color: #555555;
+} 
+.markdown-main h2 {
+    font-size: 19px;
+    font-weight: 240;
+    line-height: 25px;
+    color: #555555;    
+}
+.markdown-main h3 {
+    font-size: 18px;
+    font-weight: 240;
+    line-height: 25px;
+    color: #555555;
+}
+.markdown-main h4 {
+    font-size: 17px;
+    font-weight: 220;
+    line-height: 25px;
+    color: #555555;
+}
+.markdown-main h5 {
+    font-size: 16px;
+    font-weight: 220;
+    line-height: 24px;
+    color: #555555;
+}
+.markdown-main h6 {
+    font-size: 15px;
+    font-weight: 220;
     line-height: 24px;
     color: #555555;
 }
