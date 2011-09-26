@@ -13,7 +13,7 @@
     <div class="span13 columns">
       <h2>{{ event.name }}</h2>
       {% if event.organizer %}
-      Арганізатар: <a href="{% url cinemaclub_about event.organizer.slug %}">{{ event.organizer.name }}</a>:<br />
+      Арганізатар: <a href="{% url cinemaclub_about event.organizer.slug %}">{{ event.organizer.name }}</a><br />
       {% endif %}
       Пачатак: <span>{{ event.starts_at|date:"j E Y г. G:i" }}</span><br />
       {% if event.ends_at %}Канец: {{ event.ends_at|date:"j E Y г. G:i" }}{% endif %}
