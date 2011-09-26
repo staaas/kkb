@@ -470,7 +470,7 @@ msgstr "Логическое (True, False или None)"
 
 #: db/models/fields/__init__.py:1024
 msgid "Text"
-msgstr "Текст"
+msgstr "Тэкст"
 
 #: db/models/fields/__init__.py:1040
 msgid "Time"
