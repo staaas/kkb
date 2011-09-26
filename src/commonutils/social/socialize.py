@@ -1,7 +1,26 @@
+from datetime import datetime
+from hashlib import sha1
+
 from django.conf import settings
 from social_auth.models import UserSocialAuth
 
 DEFAULT_AVATAR = getattr(settings, 'DEFAULT_SOCIAL_AVATAR', '')
+
+def get_avatarizator_key():
+    key_src = settings.AVATARIZATOR_KEY + datetime.utcnow().strftime('%Y%m%d%H')
+    return sha1(key_src).hexdigest()
+
+def get_avatarizator_link(provider, uid, key=None):
+    '''
+    Link to avatarizator service.
+    '''
+    if not provider or not uid or not uid.isdigit():
+        return DEFAULT_AVATAR
+    if key is None:
+        key = get_avatarizator_key()
+    return settings.AVATARIZATOR_URL % {'provider': provider,
+                                        'uid': uid,
+                                        'key': key}
 
 def socialize_users(users_list):
     '''
@@ -16,6 +35,8 @@ def socialize_users(users_list):
                 user__id__in=user_ids).select_related())
     soc_dict = {s.user.id: s for s in soc_list}
 
+    avatarizator_key = get_avatarizator_key()
+    
     for usr in users_list:
         soc = soc_dict.get(usr.id)
 
