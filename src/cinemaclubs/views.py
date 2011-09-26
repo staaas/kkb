@@ -140,6 +140,11 @@ def auth_error(request):
     return {'version': version,
             'error_msg': error_msg}
 
+@render_to('500.html')
+def error500(request):
+    """ Error 500 view """
+    return {}
+
 # @login_required
 # @render_to('cinemaclubs/cinemaclubevent_add.html')
 # def cinemaclubevent_add(request):
