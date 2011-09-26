@@ -188,9 +188,9 @@ DEFAULT_SOCIAL_AVATAR =  STATIC_URL + 'img/default_avatar.png'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
 SOCIAL_AUTH_ERROR_KEY = 'SOCIAL_AUTH_ERROR_KEY'
 
-LOGIN_URL          = '/login/'
+LOGIN_URL          = '/minska/'
 LOGIN_REDIRECT_URL = '/minska/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_ERROR_URL    = '/auth-error/'
 
 TWITTER_CONSUMER_KEY = ''  # please define in settings_local
 TWITTER_CONSUMER_SECRET= ''  # please define in settings_local
