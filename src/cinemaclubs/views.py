@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 from django.core.files.images import get_image_dimensions
 from django.core.files.base import ContentFile, File
 from django.utils.translation import ugettext as _
-from django.utils.formats import date_format
+from django.utils import dateformat
 from social_auth.views import auth as social_auth_begin
 
 from commonutils.decorators import render_to
@@ -81,7 +81,8 @@ def _get_day_display(date):
     tomorrow = now + timedelta(days=1)
     if date == tomorrow.strftime(_DATE_STR_FORMAT):
         return _(u"Tomorrow")
-    return date_format(datetime.strptime(date, _DATE_STR_FORMAT))
+    return dateformat.format(datetime.strptime(date, _DATE_STR_FORMAT),
+                             'j E Y, l').lower()
 
 @render_to('cinemaclubs/calendar.html')
 def calendar(request):
