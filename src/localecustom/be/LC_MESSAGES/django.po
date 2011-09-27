@@ -733,31 +733,31 @@ msgstr "апоўдзень"
 
 #: utils/dates.py:6
 msgid "Monday"
-msgstr "Панядзелак"
+msgstr "панядзелак"
 
 #: utils/dates.py:6
 msgid "Tuesday"
-msgstr "Аўторак"
+msgstr "аўторак"
 
 #: utils/dates.py:6
 msgid "Wednesday"
-msgstr "Серада"
+msgstr "серада"
 
 #: utils/dates.py:6
 msgid "Thursday"
-msgstr "Чацьвер"
+msgstr "чацьвер"
 
 #: utils/dates.py:6
 msgid "Friday"
-msgstr "Пятніца"
+msgstr "пятніца"
 
 #: utils/dates.py:7
 msgid "Saturday"
-msgstr "Субота"
+msgstr "субота"
 
 #: utils/dates.py:7
 msgid "Sunday"
-msgstr "Нядзеля"
+msgstr "нядзеля"
 
 #: utils/dates.py:10
 msgid "Mon"
