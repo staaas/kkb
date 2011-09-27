@@ -7,6 +7,7 @@ src/settings_local.py
 src/media/modelimg/*
 src/media/eventscache/*
 src/media/cinemaclubscache/*
+src/templates/piwik.html
 src/static/*
 src/.ropeproject*
 .hg
