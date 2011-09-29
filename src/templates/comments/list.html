@@ -4,17 +4,22 @@
   $(".goto-addcomment").click(function (e) {
     e.preventDefault();
 
-    {% if request.user.is_authenticated %}
     var scroll_to_id = '#id_comment';
-    {% else %}
-    var scroll_to_id = '#login-to-comment';
-    {% endif %}
 
     goToByScroll(scroll_to_id);
     window.location.hash = scroll_to_id;
     processHash();
   });
  });
+ function processHash(hash) {
+   hash = typeof hash != 'undefined' ? hash : window.location.hash;
+   if (hash === '#addcomment') {
+     $('#id_comment').focus();
+   }
+ }
+ function goToByScroll(id){
+     	$('html,body').animate({scrollTop: $(id).offset().top},'slow');
+ }
 </script>
 
     {% if comment_list %}
