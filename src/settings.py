@@ -203,6 +203,9 @@ VKONTAKTE_APP_ID = ''  # please define in settings_local
 VKONTAKTE_APP_SECRET = ''  # please define in settings_local
 VKONTAKTE_APP_AUTH = 1
 
+AVATARIZATOR_URL = 'http://avatr.nott.cc/%(provider)s/%(uid)s?key=%(key)s'
+AVATARIZATOR_KEY = 'secret'
+
 # for django debug toolbar
 INTERNAL_IPS = ('127.0.0.1',)
 
