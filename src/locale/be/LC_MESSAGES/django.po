@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-24 15:21+0300\n"
+"POT-Creation-Date: 2011-09-29 10:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,144 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
+#: dashboard.py:28
+msgid "Quick links"
+msgstr ""
+
+#: dashboard.py:34
+msgid "Return to site"
+msgstr ""
+
+#: dashboard.py:35
+msgid "Change password"
+msgstr ""
+
+#: dashboard.py:37
+msgid "Log out"
+msgstr ""
+
+#: dashboard.py:43
+msgid "Applications"
+msgstr ""
+
+#: dashboard.py:49
+msgid "Administration"
+msgstr ""
+
+#: dashboard.py:54 dashboard.py:101
+msgid "Recent Actions"
+msgstr ""
+
+#: dashboard.py:58
+msgid "Latest Django News"
+msgstr ""
+
+#: dashboard.py:65
+msgid "Support"
+msgstr ""
+
+#: dashboard.py:68
+msgid "Django documentation"
+msgstr ""
+
+#: dashboard.py:73
+msgid "Django \"django-users\" mailing list"
+msgstr ""
+
+#: dashboard.py:78
+msgid "Django irc channel"
+msgstr ""
+
+#: blog/admin.py:13
+msgid "Publishing"
+msgstr ""
+
+#: blog/admin.py:21 cinemaclubs/admin.py:28
+msgid "Publish"
+msgstr ""
+
+#: blog/admin.py:25 cinemaclubs/admin.py:32
+msgid "Unpublish"
+msgstr ""
+
+#: blog/feeds.py:9
+msgid "KINA.KLU.BY / BLOG"
+msgstr ""
+
+#: blog/feeds.py:11
+msgid ""
+"Blog about cinema clubs and amateur '                    'cinema movement in "
+"Belarus"
+msgstr ""
+
+#: blog/models.py:12
+msgid "Slug"
+msgstr ""
+
+#: blog/models.py:14
+msgid "Published"
+msgstr ""
+
+#: blog/models.py:16
+msgid "Published at"
+msgstr ""
+
+#: blog/models.py:18
+msgid "Author"
+msgstr ""
+
+#: blog/models.py:22
+msgid "Title"
+msgstr ""
+
+#: blog/models.py:24
+msgid "Description"
+msgstr ""
+
+#: blog/models.py:26 templates/comments/form.html:10
+msgid "Text"
+msgstr ""
+
+#: cinemaclubs/admin.py:17
+msgid "Scheduling"
+msgstr ""
+
+#: cinemaclubs/admin.py:18
+msgid "Images"
+msgstr ""
+
+#: cinemaclubs/forms.py:51
+msgid "The selection width exceeds the original width."
+msgstr ""
+
+#: cinemaclubs/forms.py:53
+msgid "The selection height exceeds the original height."
+msgstr ""
+
+#: cinemaclubs/forms.py:55
+msgid "The selection doen't lie inside the image area."
+msgstr ""
+
+#: cinemaclubs/views.py:81
+msgid "Today"
+msgstr ""
+
+#: cinemaclubs/views.py:84
+msgid "Tomorrow"
+msgstr ""
+
+#: cinemaclubs/templates/cinemaclubs/cinemaclub_list.html:17
+msgid "(апісанне / расклад)"
+msgstr ""
+
+#: cinemaclubs/templates/cinemaclubs/home.html:26
+msgid "show all"
+msgstr ""
+
+#: cinemaclubs/templates/cinemaclubs/home.html:39
+msgid "all posts"
+msgstr ""
+
 #: commonutils/ncomments/__init__.py:6
 msgid "Email address"
 msgstr ""
@@ -27,47 +165,47 @@ msgstr ""
 msgid "Comment"
 msgstr "Пакінуць каментар"
 
-#: templates/bootstrap.html:21 templates/bootstrap_whead.html:21
+#: templates/base.html:21 templates/base_whead.html:21
 msgid "Blog via RSS"
 msgstr "Блог праз RSS"
 
-#: templates/bootstrap.html:22 templates/bootstrap_whead.html:22
+#: templates/base.html:22 templates/base_whead.html:22
 msgid "Blog via ATOM"
 msgstr "Блог праз ATOM"
 
-#: templates/bootstrap.html:57 templates/bootstrap_whead.html:58
+#: templates/base.html:57 templates/base_whead.html:58
 msgid "Social login"
 msgstr "Уваход праз..."
 
-#: templates/bootstrap.html:63 templates/bootstrap_whead.html:64
+#: templates/base.html:63 templates/base_whead.html:64
 msgid "Admin"
 msgstr "Адміністраванне"
 
-#: templates/bootstrap.html:65 templates/bootstrap_whead.html:66
+#: templates/base.html:65 templates/base_whead.html:66
 msgid "Logout"
 msgstr "Выйсце"
 
-#: templates/bootstrap.html:67 templates/bootstrap_whead.html:68
+#: templates/base.html:67 templates/base_whead.html:68
 msgid "Vkontakte"
 msgstr "Вкантакце"
 
-#: templates/bootstrap.html:68 templates/bootstrap_whead.html:69
+#: templates/base.html:68 templates/base_whead.html:69
 msgid "Twitter"
 msgstr ""
 
-#: templates/bootstrap.html:69 templates/bootstrap_whead.html:70
+#: templates/base.html:69 templates/base_whead.html:70
 msgid "Facebook"
 msgstr ""
 
-#: templates/bootstrap.html:71 templates/bootstrap_whead.html:72
+#: templates/base.html:71 templates/base_whead.html:72
 msgid "Open ID"
 msgstr ""
 
-#: templates/bootstrap.html:92 templates/bootstrap_whead.html:98
+#: templates/base.html:92 templates/base_whead.html:98
 msgid "Login via OpenID"
 msgstr "Увайсці праз OpenID"
 
-#: templates/bootstrap.html:98 templates/bootstrap_whead.html:104
+#: templates/base.html:98 templates/base_whead.html:104
 msgid "Login"
 msgstr "Увайсці"
 
@@ -98,7 +236,7 @@ msgstr ""
 
 #: templates/comments/list.html:21
 msgid "Comments"
-msgstr "Пакінуць каментар"
+msgstr "Каментары"
 
 #: templates/comments/list.html:21
 msgid "add"
