@@ -12,3 +12,5 @@ markdown2==1.0.1.17
 oauth2==1.5.170
 python-openid==2.2.5
 wsgiref==0.1.2
+tweepy==1.7.1
+pyres==1.1
