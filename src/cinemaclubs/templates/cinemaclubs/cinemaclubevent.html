@@ -2,8 +2,8 @@
 
 {% load markup comments %}
 
+{% block title %}{{ block.super }}{% if event.organizer %}{{ event.organizer.name_short|upper }}{% else %}МІНСКА{% endif %} - {{ event.name }}{% endblock %}
 {% block header %}{{ block.super }}{% if event.organizer %}{{ event.organizer.name_short|upper }}{% else %}МІНСКА{% endif %}{% endblock %}
-{% block title %}{{ block.super }}{% if event.organizer %}{{ event.organizer.name_short|upper }}{% else %}МІНСКА{% endif %}{% endblock %}
 
 {% block masterhead %}
   <div class="row">
