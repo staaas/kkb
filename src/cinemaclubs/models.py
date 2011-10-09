@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
+from django.utils import dateformat
 from imagekit.models import ImageModel
 from django.conf import settings
 
@@ -64,7 +65,19 @@ class CinemaClubEvent(ImageModel):
             return reverse('cinemaclubevent', args=[self.organizer.slug,
                                                     self.id,])
         return reverse('someevent', args=[self.id,])
-        
+
+    def get_short_url(self):
+        if self.organizer:
+            return reverse('someevent', args=[self.id,])
+        return reverse('someevent', args=[self.id,])
+
+    def get_short_post(self):
+        text = '%(title)s (%(organizer)s, %(datetime)s) %(url)s' % {
+            'organizer': self.organizer.name_short,
+            'datetime': dateformat.format(self.starts_at, 'j E G:i'),
+            'title': self.name,
+            'url': 'http://kina.klu.by%s' % self.get_short_url()}
+        return text[:140]
 
 TMP_UPLOAD_DIR = 'tmpimg'
 
@@ -79,16 +92,19 @@ class TemporaryImage(ImageModel):
 
 SOCIAL_SERVICE_TWITTER = 0
 SOCIAL_SERVICES = [(SOCIAL_SERVICE_TWITTER, 'twitter')]
+SOCIAL_SERVICES_DICT = dict(SOCIAL_SERVICES)
 
 SOCIAL_POSTER_STATUS_WAITING = 0
 SOCIAL_POSTER_STATUS_SUCCESS = 1
 SOCIAL_POSTER_STATUS_ERROR = 2
+SOCIAL_POSTER_STATUS_EDITING = 3
 SOCIAL_POSTER_STATUSES = [(SOCIAL_POSTER_STATUS_WAITING, _('Waiting')),
                           (SOCIAL_POSTER_STATUS_SUCCESS, _('Success')),
                           (SOCIAL_POSTER_STATUS_ERROR, _('Error'))]
+SOCIAL_POSTER_STATUSES_DICT = dict(SOCIAL_POSTER_STATUSES)
 
 class SocialPoster(models.Model):
-    id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key=True)
     event = models.ForeignKey('CinemaClubEvent')
     service = models.IntegerField(max_length=2, choices=SOCIAL_SERVICES,
                                   verbose_name=_(u'Service'))
