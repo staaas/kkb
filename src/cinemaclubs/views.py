@@ -52,7 +52,7 @@ def cinemaclub_about(request, cinemaclub_slug):
                                    slug=cinemaclub_slug)
 
     all_cinemaclub_events = CinemaClubEvent.objects.filter(
-        organizer=cinemaclub).order_by('starts_at')
+        organizer=cinemaclub, published=True).order_by('starts_at')
     past_limit = datetime.now() - timedelta(hours=1)
     upcoming_events = [event for event in all_cinemaclub_events if \
                            event.starts_at > past_limit]
