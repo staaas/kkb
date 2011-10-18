@@ -6,17 +6,17 @@
 #feedback-badge {
 	display:none;
 	background: url('../img/feedback.png') no-repeat;
-	width: 39px;
-	height: 164px;
-	margin-left:-13px;
+	width: 25px;
+	height: 145px;
+	margin-left:-2px;
 }
 
 #feedback-badge:hover {
-	margin-left:-11px;
+	margin-left: 0px;
 }
 
 #feedback-badge:active {
-	margin-left:-15px;
+	margin-left: -4px;
 }
 
 #feedback-badge span {
