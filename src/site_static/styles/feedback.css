@@ -5,18 +5,18 @@
 */
 #feedback-badge {
 	display:none;
-	background: url('../img/feedback3.png') no-repeat;
-	width: 40px;
-	height: 166px;
-	margin-left:-12px;
+	background: url('../img/feedback.png') no-repeat;
+	width: 39px;
+	height: 164px;
+	margin-left:-13px;
 }
 
 #feedback-badge:hover {
-	margin-left:-9px;
+	margin-left:-11px;
 }
 
 #feedback-badge:active {
-	margin-left:-14px;
+	margin-left:-15px;
 }
 
 #feedback-badge span {
