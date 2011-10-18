@@ -1,0 +1,33 @@
+/* The actual badge style to display on the left */
+
+/**
+* Enable this to display the badge on the left side
+*/
+#feedback-badge {
+	display:none;
+	background: url('../img/feedback3.png') no-repeat;
+	width: 40px;
+	height: 166px;
+	margin-left:-12px;
+}
+
+#feedback-badge:hover {
+	margin-left:-9px;
+}
+
+#feedback-badge:active {
+	margin-left:-14px;
+}
+
+#feedback-badge span {
+	display: none;
+}
+
+
+/* feedback form */
+#feedback-form-inner input, #feedback-form-inner textarea {
+    width: 90%;
+}
+#feedback-form, #feedback-form fieldset, #feedback-form .actions {
+    margin-bottom: 0;
+}

@@ -139,13 +139,17 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.markup',
     'django.contrib.comments',
-    'commonutils.ncomments',
+
     'south',
     'debug_toolbar',
-    'social_auth',
-    'cinemaclubs',
-    'blog',
+
     'imagekit',
+    'social_auth',
+
+    'feedback',
+    'blog',
+    'commonutils.ncomments',
+    'cinemaclubs',
 )
 
 COMMENTS_APP = 'commonutils.ncomments'

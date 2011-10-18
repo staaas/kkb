@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load i18n %}
+<!DOCTYPE html>{% load i18n feedback_tags %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,16 +14,21 @@
     <!-- Le styles -->
     <link rel="icon" type="image/png" href="{{ STATIC_URL }}img/favicon.png">
     <link rel="stylesheet" href="{{ STATIC_URL }}styles/bootstrap-1.1.0.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}styles/feedback.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}styles/kkb.css" media="all">
     <link rel="stylesheet" href="{{ STATIC_URL }}styles/nmodal.css" media="all">
     <script src="{{ STATIC_URL }}js/jquery-1.6.2.min.js" type="text/javascript"></script>
     <script src="{{ STATIC_URL }}js/jquery.reveal.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/jquery.feedbackBadge.min.js" type="text/javascript"></script>
     <link rel="alternate" type="application/rss+xml" title="{% trans "Blog via RSS" %}" href="{% url blog_feed_rss %}" />
     <link rel="alternate" type="application/atom+xml" title="{% trans "Blog via ATOM" %}" href="{% url blog_feed_atom %}" />
 
     {% block extrahead %}{% endblock %}
     <script type="text/javascript">
       $(document).ready(function() {
+        // Feedback button
+        $('#feedback-badge').feedbackBadge();
+
         // Dropdown for topbar nav
         // ===============================
 
@@ -107,7 +112,11 @@
 	  </form>
 	</div>
       </div>
+      <div id="feedback-popup" class="reveal-modal nmodal">
+	{% feedback_form %}
+      </div>
 
+      <a href="#" title="Give us feedback" id="feedback-badge" data-reveal-id="feedback-popup"><span>Feedback</span></a>
       {% block bottom %}{% endblock %}
       {% include "piwik.html" %}
   </body>

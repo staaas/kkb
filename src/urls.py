@@ -26,6 +26,7 @@ urlpatterns += patterns('',
         name='kkb_socialauth_begin'),
     url(r'^auth-error/$', 'cinemaclubs.views.auth_error', name='error'),
     url(r'^soc/', include('social_auth.urls')),
+    url(r'^feedback/', include('feedback.urls')),
 
     url(r'^$', 'cinemaclubs.views.home', name='home'),
     url(r'^minska/$', 'cinemaclubs.views.minsk', name='minsk'),
