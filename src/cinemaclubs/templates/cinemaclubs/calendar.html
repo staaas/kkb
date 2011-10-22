@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n cinemaclubs_tags %}
 
 {% block header %}{{ block.super }}КАЛЕНДАР{% endblock %}
 {% block title %}{{ block.super }}КАЛЕНДАР{% endblock %}
@@ -7,14 +7,17 @@
 <dl>
   {% for day, day_list in days_list %}
   <dd>
-    <h2>{{ day }}</h2>
+    <h2>{{ day|display_date_and_weekday }}</h2>
   </dd>
   <dt>
     {% for event in day_list %}
     <div class="row media_grid">
       <div class="span12 offset1 columns">
 	<h4><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h4>
-	<p><i>{{ event.short_description|linebreaksbr }}</i></p>
+	<p>
+	  <i>{{ event.short_description|linebreaksbr }}</i>
+	  <a href="{{ event.get_absolute_url }}"><i>(чытаць далей)</i></a>
+	</p>
         <p>Арганізатар: <a href="{{ event.organizer.get_absolute_url }}">{{ event.organizer }}</a></p>
 	<p>Пачатак: {{ event.starts_at|date:"j E, G:i" }}</p>
       </div>

@@ -12,8 +12,6 @@ from django.core.urlresolvers import reverse
 from django.core.files.images import get_image_dimensions
 from django.core.files.base import ContentFile, File
 from django.utils.translation import ugettext as _
-from django.utils.formats import date_format
-from django.utils import dateformat
 from social_auth.views import auth as social_auth_begin
 
 from commonutils.decorators import render_to
@@ -66,25 +64,16 @@ def cinemaclub_about(request, cinemaclub_slug):
 @render_to('cinemaclubs/cinemaclub_list.html')
 def cinemaclub_list(request):
     cinemaclubs = CinemaClub.objects.all().order_by('name')
+    now = datetime.now() - timedelta(hours=1)
+    # TODO: get rid of lots of queries
+    for cc in cinemaclubs:
+        events = list(CinemaClubEvent.objects.filter(
+            organizer=cc, starts_at__gt=now).order_by('starts_at')[:1])
+        cc.next_event = events and events[0] or None
     return {'cinemaclubs': cinemaclubs}
 
 # this format can be used for sroting
 _DATE_STR_FORMAT = '%Y%m%d'
-
-def _get_day_display(date):
-    '''
-    Returns date represented as a fancy string to be
-    displayed at calendar page.
-    '''
-    now = datetime.now()
-    if date == now.strftime(_DATE_STR_FORMAT):
-        return _(u"Today")
-    tomorrow = now + timedelta(days=1)
-    if date == tomorrow.strftime(_DATE_STR_FORMAT):
-        return _(u"Tomorrow")
-    datetime_obj = datetime.strptime(date, _DATE_STR_FORMAT)
-    return '%s, %s' % (date_format(datetime_obj),
-                       dateformat.format(datetime_obj, 'l'))
 
 @render_to('cinemaclubs/calendar.html')
 def calendar(request):
@@ -102,8 +91,8 @@ def calendar(request):
     days_list = [(day, sorted(day_list,  key=lambda e: e.starts_at)) \
                     for day, day_list in day_dict.iteritems()]
     # sorting the days, prettifying day name
-    days_list = [(_get_day_display(day[0]), day[1]) for day in \
-                    sorted(days_list, key=lambda x: x[0])]
+    days_list = [(datetime.strptime(day[0], _DATE_STR_FORMAT), day[1]) \
+                     for day in sorted(days_list, key=lambda x: x[0])]
     return {'days_list': days_list}
 
 @render_to('cinemaclubs/cinemaclubevent.html')

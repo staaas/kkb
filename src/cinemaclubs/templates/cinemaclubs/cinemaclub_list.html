@@ -1,4 +1,4 @@
-{% extends "base.html" %}{% load i18n %}
+{% extends "base.html" %}{% load i18n cinemaclubs_tags %}
 
 {% block header %}{{ block.super }}СПІС{% endblock %}
 {% block title %}{{ block.super }}СПІС{% endblock %}
@@ -15,6 +15,9 @@
           <h4>{{ cinemaclub.name }} {% if cinemaclub.url %}<small><a href="{{ cinemaclub.url }}">{{ cinemaclub.url }}</a></small>{% endif %}</h4>
           <i>{{ cinemaclub.mission }}</i>
 	  <p><a href="{{ cinemaclub.get_absolute_url }}">{% trans "(апісанне / расклад)" %}</a></p>
+	  {% if cinemaclub.next_event %}
+	  <p>{% trans "Наступная сустрэча" %} <span class="label warning">{{ cinemaclub.next_event.starts_at|display_date|lower }}, {{ cinemaclub.next_event.starts_at|date:"G:i" }}</span> <a href="{{ cinemaclub.next_event.get_absolute_url }}">{{ cinemaclub.next_event.name }}</a></p>
+	  {% endif %}
 	</div>
 	<div class="span3 columns">
 	  <a href="{{ cinemaclub.get_absolute_url }}" alt="{{ cinemaclub.name }}">
