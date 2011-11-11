@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-24 16:56+0300\n"
+"POT-Creation-Date: 2011-11-11 17:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,50 +17,101 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:17
+#: admin.py:40
 msgid "Scheduling"
 msgstr "Расклад"
 
-#: admin.py:18
+#: admin.py:41
 msgid "Images"
 msgstr "Выявы"
 
-#: admin.py:28
+#: admin.py:55
+msgid "Social networks"
+msgstr ""
+
+#: admin.py:59
 msgid "Publish"
 msgstr "Апублікаваць"
 
-#: admin.py:32
+#: admin.py:63
 msgid "Unpublish"
 msgstr "Зняць з публікацыі"
 
-#: forms.py:51
-msgid "The selection width exceeds the original width."
+#: admin.py:68
+#, python-format
+msgid "You shouldn't normally publish more than %s events to social networks"
 msgstr ""
 
-#: forms.py:53
-msgid "The selection height exceeds the original height."
+#: admin.py:75
+msgid "Send to social networks"
 msgstr ""
 
-#: forms.py:55
-msgid "The selection doen't lie inside the image area."
+#: forms.py:6
+msgid "Twitter"
 msgstr ""
 
-#: views.py:79
-msgid "Today"
-msgstr "Сёння"
+#: models.py:100
+msgid "Waiting"
+msgstr ""
 
-#: views.py:82
-msgid "Tomorrow"
-msgstr "Заўтра"
+#: models.py:101
+msgid "Success"
+msgstr ""
 
-#: templates/cinemaclubs/bcinemaclub_list.html:17
-msgid "(more)"
-msgstr "(яшчэ)"
+#: models.py:102
+msgid "Error"
+msgstr ""
 
-#: templates/cinemaclubs/bhome.html:24
+#: models.py:109 models.py:111
+msgid "Service"
+msgstr ""
+
+#: management/commands/publish_status.py:13
+#, python-format
+msgid "Tomorrow! %s"
+msgstr "Заўтра! %s"
+
+#: templates/admin/cinemaclubs/send_to_social_networks.html:15
+msgid "Home"
+msgstr ""
+
+#: templates/admin/cinemaclubs/send_to_social_networks.html:18
+msgid "Add"
+msgstr ""
+
+#: templates/admin/cinemaclubs/send_to_social_networks.html:28
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/cinemaclubs/send_to_social_networks.html:37
+msgid "Send"
+msgstr ""
+
+#: templates/cinemaclubs/cinemaclub_list.html:17
+msgid "(апісанне / расклад)"
+msgstr ""
+
+#: templates/cinemaclubs/cinemaclub_list.html:19
+msgid "Наступная сустрэча"
+msgstr ""
+
+#: templates/cinemaclubs/home.html:26
 msgid "show all"
 msgstr "паказаць усе"
 
-#: templates/cinemaclubs/bhome.html:37
+#: templates/cinemaclubs/home.html:39
 msgid "all posts"
 msgstr "усе допісы"
+
+#: templatetags/cinemaclubs_tags.py:39
+msgid "Today"
+msgstr "Сёння"
+
+#: templatetags/cinemaclubs_tags.py:42
+msgid "Tomorrow"
+msgstr "Заўтра"
+
+#~ msgid "(more)"
+#~ msgstr "(яшчэ)"
