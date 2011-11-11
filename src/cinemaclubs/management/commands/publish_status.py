@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 
 from django.utils.translation import ugettext as _
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
+from django.utils import translation
 
 from cinemaclubs.models import CinemaClubEvent
 import status
@@ -13,6 +14,8 @@ class Command(BaseCommand):
         return _(u'Tomorrow! %s') % event.get_short_post()
 
     def handle(self, *args, **options):
+        translation.activate('be')
+
         tomorrow = datetime.now() + timedelta(days=1)
         tomorrow_start = datetime(year=tomorrow.year, month=tomorrow.month,
                                   day=tomorrow.day, hour = 0, minute=0,
