@@ -16,7 +16,7 @@ from social_auth.views import auth as social_auth_begin
 
 from commonutils.decorators import render_to
 from models import CinemaClubEvent, CinemaClub, TemporaryImage
-from forms import CinemaClubEventForm, TemporaryImageForm, CropImageForm
+# from forms import CinemaClubEventForm, TemporaryImageForm, CropImageForm
 from utils import crop_image
 
 def kkb_socialauth_begin(request, backend):

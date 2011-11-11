@@ -55,7 +55,7 @@ urlpatterns += patterns('',
     #     'cinemaclubs.views.cinemaclubevent_crop_poster',
     #     name='cinemaclubevent_crop_poster'),
 
-    url(r'^event/(?P<event_id>\d+)/', 'cinemaclubs.views.someevent',
+    url(r'^e/(?P<event_id>\d+)/', 'cinemaclubs.views.someevent',
         name='someevent'),
     url(r'^(?P<cinemaclub_slug>\w+)/(?P<event_id>\d+)/',
         'cinemaclubs.views.cinemaclubevent', name='cinemaclubevent'),

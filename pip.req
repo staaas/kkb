@@ -10,3 +10,6 @@ Markdown==2.0.3
 markdown2==1.0.1.17
 wsgiref==0.1.2
 git+git://github.com/nott/django-pyres-feedback.git@0.0.1
+tweepy==1.7.1
+pyres==1.1
+facebook==0.9.5

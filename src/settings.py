@@ -177,6 +177,9 @@ LOGGING = {
     }
 }
 
+PYRES_DEFAULT_QUEUE = 'kinakluby'
+FEEDBACK_QUEUE = PYRES_DEFAULT_QUEUE
+
 AUTHENTICATION_BACKENDS = (
     'social_auth.backends.twitter.TwitterBackend',
     'social_auth.backends.facebook.FacebookBackend',
@@ -212,6 +215,18 @@ AVATARIZATOR_KEY = 'secret'
 
 # for django debug toolbar
 INTERNAL_IPS = ('127.0.0.1',)
+
+# keys for publishing as a twitter bot
+PUBLISHING_TWITTER_CONSUMER_KEY = ''  # please define in settings_local
+PUBLISHING_TWITTER_CONSUMER_SECRET = ''  # please define in settings_local
+PUBLISHING_TWITTER_ACCESS_KEY = ''  # please define in settings_local
+PUBLISHING_TWITTER_ACCESS_SECRET = ''  # please define in settings_local
+
+PUBLISHING_FACEBOOK_ACCESS_TOKEN = ''  # please define in settings_local
+
+PUBLISHING_VKONTAKTE_APP_ID = ''  # please define in settings_local
+PUBLISHING_VKONTAKTE_APP_SECRET = ''  # please define in settings_local
+PUBLISHING_VKONTAKTE_ACCESS_TOKEN = ''  # please define in settings_local
 
 try:
     from settings_local import *
