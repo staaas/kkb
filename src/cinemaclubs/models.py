@@ -72,9 +72,8 @@ class CinemaClubEvent(ImageModel):
         return reverse('someevent', args=[self.id,])
 
     def get_short_post(self):
-        text = '%(title)s (%(organizer)s, %(datetime)s) %(url)s' % {
+        text = '%(organizer)s - %(title)s %(url)s' % {
             'organizer': self.organizer.name_short,
-            'datetime': dateformat.format(self.starts_at, 'j E G:i'),
             'title': self.name,
             'url': 'http://kina.klu.by%s' % self.get_short_url()}
         return text[:140]
