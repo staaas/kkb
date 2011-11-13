@@ -88,28 +88,3 @@ class TemporaryImage(ImageModel):
     @property
     def url(self):
         return '%s%s' % (settings.MEDIA_URL, self.image)
-
-SOCIAL_SERVICE_TWITTER = 0
-SOCIAL_SERVICES = [(SOCIAL_SERVICE_TWITTER, 'twitter')]
-SOCIAL_SERVICES_DICT = dict(SOCIAL_SERVICES)
-
-SOCIAL_POSTER_STATUS_WAITING = 0
-SOCIAL_POSTER_STATUS_SUCCESS = 1
-SOCIAL_POSTER_STATUS_ERROR = 2
-SOCIAL_POSTER_STATUS_EDITING = 3
-SOCIAL_POSTER_STATUSES = [(SOCIAL_POSTER_STATUS_WAITING, _('Waiting')),
-                          (SOCIAL_POSTER_STATUS_SUCCESS, _('Success')),
-                          (SOCIAL_POSTER_STATUS_ERROR, _('Error'))]
-SOCIAL_POSTER_STATUSES_DICT = dict(SOCIAL_POSTER_STATUSES)
-
-class SocialPoster(models.Model):
-    id = models.AutoField(primary_key=True)
-    event = models.ForeignKey('CinemaClubEvent')
-    service = models.IntegerField(max_length=2, choices=SOCIAL_SERVICES,
-                                  verbose_name=_(u'Service'))
-    status = models.IntegerField(max_length=1, choices=SOCIAL_POSTER_STATUSES,
-                                  verbose_name=_(u'Service'), default=0)
-    text = models.TextField(default='')
-
-    class Meta:
-        unique_together = ("event", "service")
