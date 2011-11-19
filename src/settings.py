@@ -224,10 +224,10 @@ PUBLISHING_TWITTER_ACCESS_SECRET = ''  # please define in settings_local
 
 PUBLISHING_FACEBOOK_ACCESS_TOKEN = ''  # please define in settings_local
 
-PUBLISHING_VKONTAKTE_APP_ID = ''  # please define in settings_local
-PUBLISHING_VKONTAKTE_APP_SECRET = ''  # please define in settings_local
-PUBLISHING_VKONTAKTE_ACCESS_TOKEN = ''  # please define in settings_local
-
+PUBLISHING_VKONTAKTE_KEY = ''  # please define in settings_local
+PUBLISHING_VKONTAKTE_SECRET = ''  # please define in settings_local
+PUBLISHING_VKONTAKTE_USER_ID = ''  # please define in settings_local
+PUBLISHING_VKONTAKTE_USER_TOKEN = ''  # please define in settings_local
 try:
     from settings_local import *
 except ImportError:
