@@ -24,11 +24,14 @@ class VkontakteStatus(object):
         Delayed task.
         '''
         method = 'wall.post'
-        params = {'owner_id': settings.PUBLISHING_VKONTAKTE_USER_ID,
-                     'access_token': settings.PUBLISHING_VKONTAKTE_USER_TOKEN,
-                     'message': text}
-        resp = vk(method, params)
-        post_id = resp.get("response", {}).get("post_id")
-        if not post_id:
-            raise ValueError('Post ID not provided.\nMethod %s\nParams %r\n '\
-                                 'Response %r' % (method, params, resp))
+        for user, data in settings.PUBLISHING_VKONTAKTE_USERS.iteritems():
+            token, extra_params = data
+            params = {'owner_id': user,
+                      'access_token': token,
+                      'message': text}
+            params.update(extra_params)
+            resp = vk(method, params)
+            post_id = resp.get("response", {}).get("post_id")
+            if not post_id:
+                raise ValueError('Post ID not provided.\nMethod %s\nParams %r'\
+                                     '\n Response %r' % (method, params, resp))
