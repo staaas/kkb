@@ -1,14 +1,14 @@
-import urllib
 import urllib2
 import json
 from contextlib import closing
 
+from django.utils.http import urlencode
 from django.conf import settings
 
 VK_URL = 'https://api.vkontakte.ru/method/%s?%s'
 
 def vk(method, params):
-    url = VK_URL % (method, urllib.urlencode(params))
+    url = VK_URL % (method, urlencode(params))
     with closing(urllib2.urlopen(url)) as resp:
         return json.loads(resp.read())
 
