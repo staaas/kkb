@@ -10,8 +10,8 @@ from django.conf import settings
 from cinemaclubs.models import CinemaClubEvent
 import status
 
-REDIS_KEY = 'socstatus:%s'
-REDIS_EXPIRE = 60 * 60 * 24 * 30  # 30 days in seconds
+REDIS_KEY = 'cinemaclubevent:%s:startsat'
+REDIS_EXPIRE = 60 * 60 * 24 * 7  # 7 days in seconds
 
 class Command(BaseCommand):
     help = 'Submit tomorrow events to social networks'
@@ -36,23 +36,13 @@ class CommandWorker(object):
 
     def filter_new(self, events):
         r = redis.Redis()
-        result = []
-
-        key = REDIS_KEY % self.date.strftime('%Y%m%d')
-        if r.exists(key):
-            expire = False
-        else:
-            expire = True
+        date_str = self.date.strftime('%Y%m%d')
 
         for event in events:
-            if not r.sismember(key, event.id):
-                result.append(event)
-                r.sadd(key, event.id)
-
-        if expire:
-            r.expire(key, REDIS_EXPIRE)
-
-        return result
+            key = REDIS_KEY % event.id
+            if not r.exists(key) or r.get(key) != date_str:
+                r.set(key, date_str)
+                yield event
 
     def get_events(self):
         date_start = datetime(year=self.date.year, month=self.date.month,
@@ -70,7 +60,7 @@ class CommandWorker(object):
         return self.filter_new(date_events)
 
     def publish(self):
-        date_events = self.get_events()
+        date_events = list(self.get_events())
 
         for event in date_events:
             text = self.get_status_text(event)
