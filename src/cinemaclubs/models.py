@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
-from django.utils import dateformat
+from django.utils.dateformat import format as django_date
 from imagekit.models import ImageModel
 from django.conf import settings
 
@@ -38,6 +38,15 @@ class CinemaClub(ImageModel):
     def get_absolute_url(self):
         return reverse('cinemaclub_about', args=[self.slug,])
 
+EVENT_LJ_TEMPLATE = \
+    '<a href="%(evurl)s"><img width="150px" height="150px"'\
+    'style="border: 0; display: inline; float: right;" '\
+    'src="%(site)s%(evimg)s" /></a>'\
+    '<h4><a href="%(site)s%(evurl)s">%(evtitle)s</a></h4>'\
+    '<p>%(evdesc)s <a href="%(site)s%(evurl)s">(%(readmore)s)</a></p>'\
+    '<p>%(org)s: <a href="%(site)s%(ccurl)s">%(ccname)s</a></p>'\
+    '<p>%(starts)s: %(evstarts)s</p><div style="clear: both"></div>'
+
 class CinemaClubEvent(ImageModel):
     id = models.AutoField(primary_key = True)
     organizer = models.ForeignKey('CinemaClub')
@@ -72,11 +81,25 @@ class CinemaClubEvent(ImageModel):
         return reverse('someevent', args=[self.id,])
 
     def get_short_post(self):
-        text = '%(organizer)s - %(title)s %(url)s' % {
+        text = '%(organizer)s - %(title)s' % {
             'organizer': self.organizer.name_short,
-            'title': self.name,
-            'url': 'http://kina.klu.by%s' % self.get_short_url()}
+            'title': self.name}
         return text[:140]
+
+    def get_html_post(self):
+        return EVENT_LJ_TEMPLATE % {
+            'evurl': self.get_absolute_url(),
+            'evimg': self.poster_span3.url,
+            'evtitle': self.name,
+            'evdesc': self.short_description,
+            'readmore': _(u'read more'),
+            'org': _(u'Organizer'),
+            'ccurl': self.organizer.get_absolute_url(),
+            'ccname': self.organizer,
+            'starts': _(u'Starts at'),
+            'evstarts': django_date(self.starts_at, "j E (l), G:i"),
+            'site': settings.SITE_URL,}
+
 
 TMP_UPLOAD_DIR = 'tmpimg'
 

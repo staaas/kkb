@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-23 08:51+0300\n"
+"POT-Creation-Date: 2011-11-24 00:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,10 +37,27 @@ msgstr "Зняць з публікацыі"
 msgid "Twitter"
 msgstr ""
 
-#: management/commands/publish_status.py:14
-#, python-format
-msgid "Tomorrow! %s"
-msgstr "Заўтра! %s"
+#: models.py:95 templates/cinemaclubs/calendar.html:19
+msgid "read more"
+msgstr "чытаць далей"
+
+#: models.py:96 templates/cinemaclubs/calendar.html:21
+msgid "Organizer"
+msgstr "Арганізатар"
+
+#: models.py:99 templates/cinemaclubs/calendar.html:22
+msgid "Starts at"
+msgstr "Пачатак"
+
+#: management/commands/publish_status.py:21
+#: templatetags/cinemaclubs_tags.py:39
+msgid "Today"
+msgstr "Сёння"
+
+#: management/commands/publish_status.py:23
+#: templatetags/cinemaclubs_tags.py:42
+msgid "Tomorrow"
+msgstr "Заўтра"
 
 #: templates/admin/cinemaclubs/send_to_social_networks.html:15
 msgid "Home"
@@ -60,18 +77,6 @@ msgstr[1] ""
 msgid "Send"
 msgstr ""
 
-#: templates/cinemaclubs/calendar.html:19
-msgid "read more"
-msgstr "чытаць далей"
-
-#: templates/cinemaclubs/calendar.html:21
-msgid "Organizer"
-msgstr "Арганізатар"
-
-#: templates/cinemaclubs/calendar.html:22
-msgid "Starts at"
-msgstr "Пачатак"
-
 #: templates/cinemaclubs/cinemaclub_list.html:17
 msgid "(апісанне / расклад)"
 msgstr ""
@@ -87,14 +92,6 @@ msgstr "паказаць усе"
 #: templates/cinemaclubs/home.html:39
 msgid "all posts"
 msgstr "усе допісы"
-
-#: templatetags/cinemaclubs_tags.py:39
-msgid "Today"
-msgstr "Сёння"
-
-#: templatetags/cinemaclubs_tags.py:42
-msgid "Tomorrow"
-msgstr "Заўтра"
 
 #~ msgid "(more)"
 #~ msgstr "(яшчэ)"

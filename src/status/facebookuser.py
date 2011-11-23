@@ -10,10 +10,12 @@ class FacebookStatus(object):
     queue = settings.PYRES_DEFAULT_QUEUE
 
     @staticmethod
-    def perform(text):
+    def perform(text, url=None):
         '''
         Delayed task.
         '''
+        if not url is None:
+            text = '%s %s' % (text, url)
         if isinstance(text, unicode):
             text = text.encode('utf-8')
         graph = facebook.GraphAPI(settings.PUBLISHING_FACEBOOK_ACCESS_TOKEN)

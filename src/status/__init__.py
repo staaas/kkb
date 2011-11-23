@@ -3,22 +3,21 @@ from pyres import ResQ
 from .twitter import TwitterStatus
 from .facebookuser import FacebookStatus
 from .vkontakte import VkontakteStatus
-from .livejournal import LivejournalPost, format_event as lj_format_event
+from .livejournal import LivejournalPost
 
-def publish(text):
+def publish(text, url=None):
     '''
     Publish status to social networks.
     '''
     r = ResQ()
-    r.enqueue(TwitterStatus, text)
-    r.enqueue(FacebookStatus, text)
-    r.enqueue(VkontakteStatus, text)
+    r.enqueue(TwitterStatus, text, url)
+    r.enqueue(FacebookStatus, text, url)
+    r.enqueue(VkontakteStatus, text, url)
 
-def lj_publish(subject, events):
+def lj_publish(subject, text):
     '''
     Publish cumulative post to Livejournal.
     '''
-    text = ''.join(lj_format_event(e) for e in events)
     r = ResQ()
     r.enqueue(LivejournalPost, subject, text)
     

@@ -19,10 +19,13 @@ class VkontakteStatus(object):
     queue = settings.PYRES_DEFAULT_QUEUE
 
     @staticmethod
-    def perform(text):
+    def perform(text, url):
         '''
         Delayed task.
         '''
+        if not url is None:
+            text = '%s %s' % (text, url)
+
         method = 'wall.post'
         for user, data in settings.PUBLISHING_VKONTAKTE_USERS.iteritems():
             token, extra_params = data

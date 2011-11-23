@@ -1,8 +1,6 @@
 import xmlrpclib
 from datetime import datetime
 
-from django.utils.translation import ugettext as _
-from django.utils.dateformat import format as django_date
 from django.conf import settings
 
 
@@ -32,26 +30,3 @@ class LivejournalPost(object):
                 }
         # call the remote method as a method of the server object
         server.LJ.XMLRPC.postevent(args)
-
-LJ_TEMPLATE = \
-    '<a href="%(evurl)s"><img width="150px" height="150px"'\
-    'style="border: 0; display: inline; float: right;" '\
-    'src="%(site)s%(evimg)s" /></a>'\
-    '<h4><a href="%(site)s%(evurl)s">%(evtitle)s</a></h4>'\
-    '<p>%(evdesc)s <a href="%(site)s%(evurl)s">(%(readmore)s)</a></p>'\
-    '<p>%(org)s: <a href="%(site)s%(ccurl)s">%(ccname)s</a></p>'\
-    '<p>%(starts)s: %(evstarts)s</p><div style="clear: both"></div>'
-
-def format_event(e):
-    return LJ_TEMPLATE % {
-        'evurl': e.get_absolute_url(),
-        'evimg': e.poster_span3.url,
-        'evtitle': e.name,
-        'evdesc': e.short_description,
-        'readmore': _(u'read more'),
-        'org': _(u'Organizer'),
-        'ccurl': e.organizer.get_absolute_url(),
-        'ccname': e.organizer,
-        'starts': _(u'Starts at'),
-        'evstarts': django_date(e.starts_at, "j E (l), G:i"),
-        'site': settings.SITE_URL,}

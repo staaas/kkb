@@ -15,7 +15,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 SITE_URL = 'http://kina.klu.by'
-SITE_NAME = 'кіна.клу.бы / мінска'
+SITE_NAME = u'кіна.клу.бы / мінска'
 
 DATABASES = {
     'default': {
