@@ -16,10 +16,10 @@
 	<h4><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></h4>
 	<p>
 	  <i>{{ event.short_description|linebreaksbr }}</i>
-	  <a href="{{ event.get_absolute_url }}"><i>(чытаць далей)</i></a>
+	  <a href="{{ event.get_absolute_url }}"><i>({% trans "read more" %})</i></a>
 	</p>
-        <p>Арганізатар: <a href="{{ event.organizer.get_absolute_url }}">{{ event.organizer }}</a></p>
-	<p>Пачатак: {{ event.starts_at|date:"j E, G:i" }}</p>
+        <p>{% trans "Organizer" %}: <a href="{{ event.organizer.get_absolute_url }}">{{ event.organizer }}</a></p>
+	<p>{% trans "Starts at" %}: {{ event.starts_at|date:"j E, G:i" }}</p>
       </div>
       <a href="{{ event.get_absolute_url }}" class="span3"><img src="{{ event.poster_span3.url }}" width="150px" /></a>
     </div>

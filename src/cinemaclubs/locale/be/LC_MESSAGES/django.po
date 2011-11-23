@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 17:50+0300\n"
+"POT-Creation-Date: 2011-11-23 08:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,56 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:40
+#: admin.py:27
 msgid "Scheduling"
 msgstr "Расклад"
 
-#: admin.py:41
+#: admin.py:28
 msgid "Images"
 msgstr "Выявы"
 
-#: admin.py:55
-msgid "Social networks"
-msgstr ""
-
-#: admin.py:59
+#: admin.py:36
 msgid "Publish"
 msgstr "Апублікаваць"
 
-#: admin.py:63
+#: admin.py:40
 msgid "Unpublish"
 msgstr "Зняць з публікацыі"
-
-#: admin.py:68
-#, python-format
-msgid "You shouldn't normally publish more than %s events to social networks"
-msgstr ""
-
-#: admin.py:75
-msgid "Send to social networks"
-msgstr ""
 
 #: forms.py:6
 msgid "Twitter"
 msgstr ""
 
-#: models.py:100
-msgid "Waiting"
-msgstr ""
-
-#: models.py:101
-msgid "Success"
-msgstr ""
-
-#: models.py:102
-msgid "Error"
-msgstr ""
-
-#: models.py:109 models.py:111
-msgid "Service"
-msgstr ""
-
-#: management/commands/publish_status.py:13
+#: management/commands/publish_status.py:14
 #, python-format
 msgid "Tomorrow! %s"
 msgstr "Заўтра! %s"
@@ -88,6 +59,18 @@ msgstr[1] ""
 #: templates/admin/cinemaclubs/send_to_social_networks.html:37
 msgid "Send"
 msgstr ""
+
+#: templates/cinemaclubs/calendar.html:19
+msgid "read more"
+msgstr "чытаць далей"
+
+#: templates/cinemaclubs/calendar.html:21
+msgid "Organizer"
+msgstr "Арганізатар"
+
+#: templates/cinemaclubs/calendar.html:22
+msgid "Starts at"
+msgstr "Пачатак"
 
 #: templates/cinemaclubs/cinemaclub_list.html:17
 msgid "(апісанне / расклад)"

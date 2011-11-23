@@ -13,6 +13,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+SITE_URL = 'http://kina.klu.by'
+SITE_NAME = 'кіна.клу.бы / мінска'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2',

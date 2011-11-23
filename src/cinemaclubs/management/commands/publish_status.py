@@ -2,7 +2,9 @@ from datetime import datetime, timedelta
 
 from django.utils.translation import ugettext as _
 from django.core.management.base import BaseCommand
+from django.utils.dateformat import format as django_date
 from django.utils import translation
+from django.conf import settings
 
 from cinemaclubs.models import CinemaClubEvent
 import status
@@ -33,3 +35,7 @@ class Command(BaseCommand):
             text = self.get_status_text(event)
             self.stdout.write('Publishing:\n%s\n\n' % text)
             status.publish(text)
+
+        lj_subject = '%s :: %s' % (django_date(tomorrow, "l, j E"),
+                                   settings.SITE_NAME)
+        status.lj_publish(lj_subject, tomorrow_events)
