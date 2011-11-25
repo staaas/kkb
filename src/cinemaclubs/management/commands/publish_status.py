@@ -64,7 +64,7 @@ class CommandWorker(object):
 
         for event in date_events:
             text = self.get_status_text(event)
-            url = event.get_short_url()
+            url = settings.SITE_URL + event.get_short_url()
             self.stdout.write('Publishing:\n%s\n\n' % text)
             status.publish(text, url)
 
