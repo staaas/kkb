@@ -230,7 +230,8 @@ PUBLISHING_FACEBOOK_ACCESS_TOKEN = ''  # please define in settings_local
 
 PUBLISHING_VKONTAKTE_KEY = ''  # please define in settings_local
 PUBLISHING_VKONTAKTE_SECRET = ''  # please define in settings_local
-PUBLISHING_VKONTAKTE_USERS = {}  # please define in settings_local
+PUBLISHING_VKONTAKTE_USER = ()  # please define in settings_local
+PUBLISHING_VKONTAKTE_REPOST_USERS = {}  # please define in settings_local
 try:
     from settings_local import *
 except ImportError:
