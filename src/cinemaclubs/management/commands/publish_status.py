@@ -9,6 +9,7 @@ from django.conf import settings
 
 from cinemaclubs.models import CinemaClubEvent
 import status
+import status.livejournal
 
 REDIS_KEY = 'cinemaclubevent:%s:startsat'
 REDIS_EXPIRE = 60 * 60 * 24 * 7  # 7 days in seconds
@@ -72,4 +73,4 @@ class CommandWorker(object):
             lj_subject = u'%s :: %s' % (django_date(self.date, "l, j E"),
                                         settings.SITE_NAME)
             lj_html = '<br />'.join(e.get_html_post() for e in date_events)
-            status.lj_publish(lj_subject, lj_html)
+            status.livejournal.publish(lj_subject, lj_html)

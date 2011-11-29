@@ -2,6 +2,7 @@ import xmlrpclib
 from datetime import datetime
 
 from django.conf import settings
+from pyres import ResQ
 
 
 # ref: http://www.livejournal.com/doc/server/ljp.csp.xml-rpc.postevent.html
@@ -14,12 +15,14 @@ class LivejournalPost(object):
     queue = settings.PYRES_DEFAULT_QUEUE
 
     @staticmethod
-    def perform(subj, text):
+    def perform(target, subj, text):
+        username, pwd_hash, extra_params = settings.PUBLISHING_LJ_TARGETS[target]
+
         server = xmlrpclib.ServerProxy(LJ_XML_RPC)
         now = datetime.now()
 
-        args = {"username" : settings.PUBLISHING_LJ_UNAME,
-                "hpassword" : settings.PUBLISHING_LJ_PWD,
+        args = {"username" : username,
+                "hpassword" : pwd_hash,
                 "event" : text.encode('utf-8'),
                 "subject" : subj.encode('utf-8'),
                 "year" : now.year,
@@ -28,5 +31,14 @@ class LivejournalPost(object):
                 "hour": now.hour,
                 "min" : now.minute
                 }
-        # call the remote method as a method of the server object
+        args.update(extra_params)
+
         server.LJ.XMLRPC.postevent(args)
+
+def publish(subject, text):
+    '''
+    Publish cumulative post to Livejournal.
+    '''
+    r = ResQ()
+    for target in settings.PUBLISHING_LJ_TARGETS.iterkeys():
+        r.enqueue(LivejournalPost, target, subject, text)

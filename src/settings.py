@@ -232,6 +232,10 @@ PUBLISHING_VKONTAKTE_KEY = ''  # please define in settings_local
 PUBLISHING_VKONTAKTE_SECRET = ''  # please define in settings_local
 PUBLISHING_VKONTAKTE_USER = ()  # please define in settings_local
 PUBLISHING_VKONTAKTE_REPOST_USERS = {}  # please define in settings_local
+
+PUBLISHING_LJ_TARGETS = []  # {target_key: (username, md5_pwd_hash.hexdigest,
+                            #               extra_params_dict)}
+
 try:
     from settings_local import *
 except ImportError:

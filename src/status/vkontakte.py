@@ -41,8 +41,8 @@ class VkontakteStatus(object):
             raise ValueError('Post ID not provided.\nMethod %s\nParams %r'\
                                  '\n Response %r' % (method, params, resp))
 
+        r = ResQ()
         for user, data in settings.PUBLISHING_VKONTAKTE_REPOST_USERS.iteritems():
-            r = ResQ()
             r.enqueue(VkontakteLike, user, owner_id, post_id)
 
 class VkontakteLike(object):
