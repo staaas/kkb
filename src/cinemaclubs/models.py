@@ -17,7 +17,7 @@ class CinemaClub(ImageModel):
     url = models.CharField(max_length=256, null=True, blank=True)
     logo = models.ImageField(null=True, upload_to=UPLOAD_DIR)
 
-    slug = models.SlugField(max_length=40, default='')
+    slug = models.SlugField(max_length=40, default='', unique=True)
 
     # to be translated
     name = models.CharField(max_length=150, default='')
@@ -49,12 +49,12 @@ EVENT_LJ_TEMPLATE = \
 
 class CinemaClubEvent(ImageModel):
     id = models.AutoField(primary_key = True)
-    organizer = models.ForeignKey('CinemaClub')
+    organizer = models.ForeignKey('CinemaClub', db_index=True)
 #    geo_coordinates = models.CharField(max_length=50)
-    starts_at = models.DateTimeField(null=True)
+    starts_at = models.DateTimeField(null=True, db_index=True)
     ends_at = models.DateTimeField(null=True, blank=True)
     poster = models.ImageField(null=True, upload_to=UPLOAD_DIR)
-    published = models.BooleanField(null=False, default=False)
+    published = models.BooleanField(null=False, default=False, db_index=True)
 
     # to be translated
     name = models.CharField(max_length=150, default='')

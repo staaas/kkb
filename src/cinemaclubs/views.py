@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import os.path
-import random
 from datetime import timedelta, datetime
 
 from django.conf import settings
@@ -33,16 +32,13 @@ def minsk(request):
         starts_at__gte=datetime.now() - timedelta(hours=1),
         published=True).order_by(
         'starts_at')[:HOME_EVENTS_COUNT]
-    cinemaclubs = list(CinemaClub.objects.all())
+    cinemaclubs = list(CinemaClub.objects.all().order_by('?')[:HOME_CINEMACLUBS_COUNT])
 
     return {'upcoming_events': upcoming_events,
-            'cinemaclubs': random.sample(cinemaclubs,
-                                         min(HOME_CINEMACLUBS_COUNT,
-                                             len(cinemaclubs))),}
-
+            'cinemaclubs': cinemaclubs,}
 
 def home(request):
-    return redirect('minsk', permanent=False)
+    return redirect('minsk', permanent=(not settings.DEBUG))
 
 @render_to('cinemaclubs/cinemaclub_about.html')
 def cinemaclub_about(request, cinemaclub_slug):
