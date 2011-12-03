@@ -20,7 +20,3 @@ class LatestEntriesRss(Feed):
 
     def item_description(self, item):
         return item.description
-
-class LatestEntriesAtom(LatestEntriesRss):
-    feed_type = Atom1Feed
-    subtitle = LatestEntriesRss.description

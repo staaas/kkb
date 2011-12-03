@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-24 00:25+0300\n"
+"POT-Creation-Date: 2011-12-03 17:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,28 +33,36 @@ msgstr "Апублікаваць"
 msgid "Unpublish"
 msgstr "Зняць з публікацыі"
 
+#: feeds.py:15
+msgid "kina.klub.by / calendar"
+msgstr "кіна.клу.бы / календар"
+
+#: feeds.py:17
+msgid "Upcoming cinemaclub events"
+msgstr "Надыходзячыя сустрэчы кінаклубаў Мінска"
+
 #: forms.py:6
 msgid "Twitter"
 msgstr ""
 
-#: models.py:95 templates/cinemaclubs/calendar.html:19
-msgid "read more"
-msgstr "чытаць далей"
-
-#: models.py:96 templates/cinemaclubs/calendar.html:21
+#: models.py:99 models.py:111 templates/cinemaclubs/calendar.html:21
 msgid "Organizer"
 msgstr "Арганізатар"
 
-#: models.py:99 templates/cinemaclubs/calendar.html:22
+#: models.py:101 models.py:114 templates/cinemaclubs/calendar.html:22
 msgid "Starts at"
 msgstr "Пачатак"
 
-#: management/commands/publish_status.py:21
+#: models.py:110 templates/cinemaclubs/calendar.html:19
+msgid "read more"
+msgstr "чытаць далей"
+
+#: management/commands/publish_status.py:27
 #: templatetags/cinemaclubs_tags.py:39
 msgid "Today"
 msgstr "Сёння"
 
-#: management/commands/publish_status.py:23
+#: management/commands/publish_status.py:28
 #: templatetags/cinemaclubs_tags.py:42
 msgid "Tomorrow"
 msgstr "Заўтра"

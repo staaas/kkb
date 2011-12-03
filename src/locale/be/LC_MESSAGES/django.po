@@ -170,8 +170,8 @@ msgid "Blog via RSS"
 msgstr "Блог праз RSS"
 
 #: templates/base.html:22 templates/base_whead.html:22
-msgid "Blog via ATOM"
-msgstr "Блог праз ATOM"
+msgid "Calendar via RSS"
+msgstr "Календар праз RSS"
 
 #: templates/base.html:57 templates/base_whead.html:58
 msgid "Social login"
