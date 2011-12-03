@@ -1,7 +1,6 @@
 from pyres import ResQ
 
 from .twitter import TwitterStatus
-from .facebookuser import FacebookStatus
 from .vkontakte import VkontakteStatus
 
 def publish(text, url=None):
@@ -10,5 +9,4 @@ def publish(text, url=None):
     '''
     r = ResQ()
     r.enqueue(TwitterStatus, text, url)
-    r.enqueue(FacebookStatus, text, url)
     r.enqueue(VkontakteStatus, text, url)

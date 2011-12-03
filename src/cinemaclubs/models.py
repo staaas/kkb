@@ -47,6 +47,12 @@ EVENT_LJ_TEMPLATE = \
     '<p>%(org)s: <a href="%(site)s%(ccurl)s">%(ccname)s</a></p>'\
     '<p>%(starts)s: %(evstarts)s</p><div style="clear: both"></div>'
 
+EVENT_TEMPLATE = \
+    '%(evtitle)s\n\n'\
+    '%(evdesc)s\n\n'\
+    '%(org)s: %(ccname)s\n'\
+    '%(starts)s: %(evstarts)s'
+
 class CinemaClubEvent(ImageModel):
     id = models.AutoField(primary_key = True)
     organizer = models.ForeignKey('CinemaClub', db_index=True)
@@ -86,6 +92,15 @@ class CinemaClubEvent(ImageModel):
             'title': self.name}
         return text[:140]
 
+    def get_post(self):
+        return EVENT_TEMPLATE % {
+            'evtitle': self.name,
+            'evdesc': self.short_description,
+            'org': _(u'Organizer'),
+            'ccname': self.organizer,
+            'starts': _(u'Starts at'),
+            'evstarts': django_date(self.starts_at, "j E (l), G:i")}
+
     def get_html_post(self):
         return EVENT_LJ_TEMPLATE % {
             'evurl': self.get_absolute_url(),
@@ -100,6 +115,8 @@ class CinemaClubEvent(ImageModel):
             'evstarts': django_date(self.starts_at, "j E (l), G:i"),
             'site': settings.SITE_URL,}
 
+    def get_image_url(self):
+        return self.poster_span5.url
 
 TMP_UPLOAD_DIR = 'tmpimg'
 

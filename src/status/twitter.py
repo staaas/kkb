@@ -16,6 +16,9 @@ class TwitterStatus(object):
         '''
         Delayed task.
         '''
+        if not settings.PUBLISHING_TWITTER_CONSUMER_KEY:
+            return
+
         if url is None:
             text = text[:TWEET_LENGTH]
         else:

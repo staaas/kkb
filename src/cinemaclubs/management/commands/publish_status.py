@@ -10,6 +10,7 @@ from django.conf import settings
 from cinemaclubs.models import CinemaClubEvent
 import status
 import status.livejournal
+import status.facebooklink
 
 REDIS_KEY = 'cinemaclubevent:%s:startsat'
 REDIS_EXPIRE = 60 * 60 * 24 * 7  # 7 days in seconds
@@ -32,8 +33,8 @@ class CommandWorker(object):
         self.date_text = date_text
         self.stdout = stdout
 
-    def get_status_text(self, event):
-        return '%s! %s' % (self.date_text, event.get_short_post())
+    def get_status_text(self, event_text):
+        return '%s! %s' % (self.date_text, event_text)
 
     def filter_new(self, events):
         r = redis.Redis()
@@ -64,12 +65,20 @@ class CommandWorker(object):
         date_events = list(self.get_events())
 
         for event in date_events:
-            text = self.get_status_text(event)
+            # Twitter, Vkontakte
+            text = self.get_status_text(event.get_short_post())
             url = settings.SITE_URL + event.get_short_url()
             self.stdout.write('Publishing:\n%s\n\n' % text)
             status.publish(text, url)
 
+            # Facebook
+            text = self.get_status_text(event.get_post())
+            url = settings.SITE_URL + event.get_absolute_url()
+            image = settings.SITE_URL + event.get_image_url()
+            status.facebooklink.publish(text, url, image)
+
         if date_events:
+            # Livejournal
             lj_subject = u'%s :: %s' % (django_date(self.date, "l, j E"),
                                         settings.SITE_NAME)
             lj_html = '<br />'.join(e.get_html_post() for e in date_events)

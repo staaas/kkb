@@ -227,13 +227,12 @@ PUBLISHING_TWITTER_ACCESS_KEY = ''  # please define in settings_local
 PUBLISHING_TWITTER_ACCESS_SECRET = ''  # please define in settings_local
 
 PUBLISHING_FACEBOOK_ACCESS_TOKEN = ''  # please define in settings_local
+PUBLISHING_FACEBOOK_PAGE_ID = ''  # please define in settings_local
 
-PUBLISHING_VKONTAKTE_KEY = ''  # please define in settings_local
-PUBLISHING_VKONTAKTE_SECRET = ''  # please define in settings_local
 PUBLISHING_VKONTAKTE_USER = ()  # please define in settings_local
 PUBLISHING_VKONTAKTE_REPOST_USERS = {}  # please define in settings_local
 
-PUBLISHING_LJ_TARGETS = []  # {target_key: (username, md5_pwd_hash.hexdigest,
+PUBLISHING_LJ_TARGETS = {}  # {target_key: (username, md5_pwd_hash.hexdigest,
                             #               extra_params_dict)}
 
 try:
