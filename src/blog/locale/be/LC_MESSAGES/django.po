@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-24 16:56+0300\n"
+"POT-Creation-Date: 2011-12-04 15:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,3 +66,7 @@ msgstr "Апісанне"
 #: models.py:26
 msgid "Text"
 msgstr "Тэкст"
+
+#: templates/blog/posts.html:12 templates/blog/tags/recent_entry.html:4
+msgid "(read it)"
+msgstr "(чытаць)"
