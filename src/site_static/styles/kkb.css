@@ -6,9 +6,6 @@ html, body {
 body {
     padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
 }
-.container > footer p {
-    text-align: center; /* center align it with the container */
-}
 /* The white background content wrapper */
 .content {
     background-color: #fff;
@@ -105,6 +102,48 @@ form div.openid-identifier input[type=text] {
     margin-right: 6px;
     vertical-align: top;
     width: 20px;
+}
+/* footer */
+.container > footer {
+    padding-top: 0px;
+    margin-bottom: 20px;
+}
+.container > footer ul {
+    list-style: none;
+    margin: 0 0 2px 0;
+}
+.footext {
+    display: block;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+#fookinakluby {
+    color: #222222;
+}
+#foominska {
+    color: #00c4cf;
+    letter-spacing: 0.35em
+}
+.sociallink {
+   padding: 3px 0 3px 20px;
+   background: transparent no-repeat center left;
+}
+#vk-link {
+   background-image: url(../img/soc/vkontakte.png)
+}
+#fb-link {
+   background-image: url(../img/soc/facebook.png)
+}
+#tw-link {
+   background-image: url(../img/soc/twitter.png)
+}
+#lj-link {
+   background-image: url(../img/soc/livejournal.gif)
+}
+#rss-link {
+   background-image: url(../img/soc/rss.png)
 }
 /* home */
 .event-or-cinemaclub-name {
