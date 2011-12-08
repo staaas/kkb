@@ -39,7 +39,7 @@ class CinemaClub(ImageModel):
         return reverse('cinemaclub_about', args=[self.slug,])
 
 EVENT_LJ_TEMPLATE = \
-    '<a href="%(evurl)s"><img width="150px" height="150px"'\
+    '<a href="%(site)s%(evurl)s"><img width="150px" height="150px"'\
     'style="border: 0; display: inline; float: right;" '\
     'src="%(site)s%(evimg)s" /></a>'\
     '<h4><a href="%(site)s%(evurl)s">%(evtitle)s</a></h4>'\
