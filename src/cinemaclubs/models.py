@@ -12,6 +12,10 @@ UPLOAD_DIR = 'modelimg'
 IMG_MAX_SIZE = 1024
 IMG_MIN_SIZE = 300
 
+class CinemaClubManager(models.Manager):
+    def get_query_set(self):
+        return super(CinemaClubManager, self).get_query_set().order_by('name')
+
 class CinemaClub(ImageModel):
     id = models.AutoField(primary_key = True)
 #    geo_coordinates = models.CharField(max_length=50)
@@ -28,10 +32,14 @@ class CinemaClub(ImageModel):
 
     curators = models.ManyToManyField(User, related_name='cinemaclubs')
 
+
+    objects = CinemaClubManager()
+
     class IKOptions:
         spec_module = 'cinemaclubs.imagekit_cinemaclub'
         cache_dir = 'cinemaclubscache'
         image_field = 'logo'
+        ordering = ('name',)
 
     def __unicode__(self):
         return self.name
@@ -69,7 +77,7 @@ class CinemaClubEvent(ImageModel):
     published = models.BooleanField(null=False, default=False, db_index=True)
 
     # to be translated
-    name = models.CharField(max_length=150, default='')
+    name = models.CharField(max_length=150, default='', db_index=True)
     short_description = CharFieldWithTextarea(max_length=500, default='', db_column='short_desciption')
     description = models.TextField(default='')
 

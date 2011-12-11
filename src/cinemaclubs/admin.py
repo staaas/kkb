@@ -4,7 +4,7 @@ from django.utils.translation import ugettext as _
 from models import CinemaClub, CinemaClubEvent
 
 class CinemaClubAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('name',)
 admin.site.register(CinemaClub, CinemaClubAdmin)
 
 SOCIAL_NETWORKS_SEND_EVENTS_LIMIT = 20
