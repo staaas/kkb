@@ -5,7 +5,8 @@ from django.utils.translation import ugettext as _
 from django.utils.dateformat import format as django_date
 from imagekit.models import ImageModel
 from django.conf import settings
-from django import forms as django_forms
+
+from .fields import CharFieldWithTextarea
 
 
 UPLOAD_DIR = 'modelimg'
@@ -47,10 +48,6 @@ class CinemaClub(ImageModel):
     def get_absolute_url(self):
         return reverse('cinemaclub_about', args=[self.slug,])
 
-class CharFieldWithTextarea(models.CharField):
-    def formfield(self, **kwargs):
-        kwargs["widget"] = django_forms.Textarea(attrs={'rows': 3})
-        return super(CharFieldWithTextarea, self).formfield(**kwargs)
 
 EVENT_LJ_TEMPLATE = \
     '<a href="%(site)s%(evurl)s"><img width="150px" height="150px"'\

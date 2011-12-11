@@ -12,6 +12,7 @@ SOCIAL_NETWORKS_SEND_EVENTS_LIMIT = 20
 class CinemaClubEventAdmin(admin.ModelAdmin):
     list_display = ['name', 'organizer', 'starts_at', 'published']
     list_filter = ['organizer']
+    ordering = ('starts_at',)
 
     fieldsets = (
         (None, {'fields': ('name', 'organizer', 'short_description',
