@@ -13,3 +13,4 @@ git+git://github.com/nott/django-pyres-feedback.git@0.0.1
 tweepy==1.7.1
 pyres==1.1
 facebook==0.9.5
+raven==0.7.0

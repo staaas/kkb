@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.comments',
 
+    'raven.contrib.django',
     'south',
     'debug_toolbar',
 
@@ -166,11 +167,30 @@ COMMENTS_APP = 'commonutils.ncomments'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'sentry': {
+            'level': 'DEBUG',
+            'class': 'raven.contrib.django.handlers.SentryHandler',
+            'formatter': 'verbose'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
     },
     'loggers': {
         'django.request': {
@@ -178,7 +198,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-    }
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
 }
 
 PYRES_DEFAULT_QUEUE = 'kinakluby'
