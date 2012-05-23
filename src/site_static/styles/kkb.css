@@ -292,3 +292,7 @@ form div.openid-identifier input[type=text] {
 .center {
     text-align: center;
 }
+
+blockquote p {
+    margin-bottom: 9px;
+}
